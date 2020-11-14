@@ -1,0 +1,28 @@
+body {
+    font-family: 'Nunuto', 'Roboto', Arial, Helvetica;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 8px !important;
+}
+
+h1 {
+    font-size: 38px;
+    line-height: 1.2;
+
+}
+h2 {
+    font-size: 22px;
+}
+
+p, a, span {
+    font-weight: 200;
+}
+li {
+    font-weight: 300;
+}
+
+.active {
+    font-weight: 700 !important;
+}

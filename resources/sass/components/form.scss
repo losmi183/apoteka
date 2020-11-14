@@ -1,0 +1,43 @@
+
+.search-input {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid $gray-font;
+    border-radius: 20px;
+    margin-right: 15px;
+
+    input {
+        border: none;
+        background: red;
+    }
+    input:focus {
+        outline: none; 
+        background: red;
+    }
+
+    i.fa-search {
+        color: $gray-font;
+    }
+    button {
+        border: none;
+        background: none;
+    }
+}
+
+.cart-button {
+    background: $main-color;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 20px;
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+input.quantity {
+    max-width: 60px;    
+    padding: 5px;
+}

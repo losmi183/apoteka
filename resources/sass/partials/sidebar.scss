@@ -1,0 +1,23 @@
+aside {
+
+    text-transform: uppercase;
+
+    li {
+        margin-bottom: 15px;        
+    }
+    li.sidebar-item {
+        color: $gray-font;
+        &:hover {
+            color: $dark-gray;
+        }
+        &:visited {
+            color: $gray-font;
+        }
+    }
+
+    span {
+        color: $main-color;
+        font-size: 1.6em;
+        text-align: right;
+    }
+}

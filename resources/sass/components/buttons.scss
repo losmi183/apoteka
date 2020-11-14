@@ -1,0 +1,52 @@
+.button-primary {
+    padding: 10px 20px;
+    background: $main-color;
+    border-radius: 20px;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+
+    &:hover {
+        color: $dark-main;
+    }
+
+    i {
+        color: $dark-main;
+        margin: 0 5px;
+    }
+}
+.button-secondary {
+    padding: 10px 20px;
+    background: $blue;
+    border-radius: 20px;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+
+    &:hover {
+        color: $dark-blue;
+    }
+    
+    i {
+        color: $dark-blue;
+        margin: 0 5px;
+    }
+}
+.button-secondary-outline {
+    padding: 10px 20px;
+    border: 1px solid $blue;
+    border-radius: 20px;
+    color: $blue;
+    text-transform: uppercase;
+    background: transparent;
+
+    &:hover {
+        border: 1px solid $dark-blue;
+    }
+    
+    i {
+        border: 1px solid $dark-blue;
+        margin: 0 5px;
+    }
+}
+

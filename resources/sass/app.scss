@@ -1,0 +1,45 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+
+
+/**
+*
+* U ovom fajlu se nalaze sabrani svi Custom stilovi koji se koriste.
+*
+*/
+
+// Base
+@import 'base/reset.scss';
+@import 'base/basic.scss';
+@import 'base/helpers.scss';
+@import 'base/fonts.scss';
+@import 'responsivness';
+
+
+// Components
+@import 'components/form.scss';
+@import 'components/boxes.scss';
+@import 'components/buttons.scss';
+
+
+// Pages
+@import 'pages/main.scss';
+@import 'pages/shop.scss';
+@import 'pages/product.scss';
+
+
+// Partials
+@import 'partials/header.scss';
+@import 'partials/footer.scss';
+@import 'partials/navigator.scss';
+@import 'partials/sidebar.scss';
+@import 'partials/navbar.scss';
+

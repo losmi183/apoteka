@@ -1,0 +1,41 @@
+.basic-info {
+    .col-9 {
+        text-transform: uppercase;
+    }
+    .brand {
+        color: $blue;
+    }
+    div {
+        margin-bottom: 10px;
+    }
+}
+
+.quantity {
+    label, select, input {
+        display: block;
+        margin-bottom: 10px;
+    }
+    select {
+        padding: 5px;
+    }
+}
+
+.description {
+    h2, h3, strong, p, ul, li {
+        margin: 25px 0;
+    }
+}
+
+.download {
+
+    color: $dark-gray;
+
+    i {
+        font-size: 50px;
+        display: block;
+        margin-right: 10px;
+    }
+    span {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,61 @@
+.box1 {
+    border: 1px solid #eee;
+    min-height: 400px;
+    position: relative;
+    margin-bottom: 50px;
+
+    .shop-image {
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        img:hover {
+            filter: opacity(0.80);
+        }
+    }
+    h3 {
+        cursor: pointer;
+        color: $main-color;
+        margin: 10px 0 10px;
+        text-transform: uppercase;   
+        font-size: 1.2em;    
+    }
+
+    .box-bottom {
+        p {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+    }
+    .box-actions {
+        i {
+            font-size: 1.2em;
+            color: $main-color;
+            margin-left: 5px;
+
+            &:hover {
+                color: $dark-gray;
+            }
+        }
+    }
+}
+
+.box2 {
+    text-align: center;
+
+    i {
+        font-size: 4em;
+        color: $main-color;
+    }
+
+    h2 {
+        font-weight: 600;
+        margin: 20px 0;
+        color: $dark-gray;
+        &:hover {
+            color: $main-color;
+        }
+    }
+    p {
+        color: $gray-font;
+    }
+}
