@@ -21,9 +21,11 @@ class CreateProductsTable extends Migration
                   ->on('categories')->onUpdate('cascade')->onDelete('set null');
 
 
-            // $table->unsignedBigInteger('user_id')->nullable();
-            // $table->foreign('user_id')->references('id')
-            //       ->on('users')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedBigInteger('subcategory_id')->nullable();            
+            $table->foreign('subcategory_id')->references('id')
+                  ->on('categories')->onUpdate('cascade')->onDelete('set null');
+
+
 
 
 

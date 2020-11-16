@@ -5,8 +5,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img src="/images/products/{{$product->image}}" alt="" class="img-fluid">
+
+                <div class="image-full">
+                    <img id="img-lg" src="/images/products/{{$product->image}}" alt="" class="img-fluid">
+                </div>
                 {{-- <img src="{{asset('/images/products/'.$product->image)}}" alt="" class="img-fluid"> --}}
+                
+                @if ($images)
+                    <div class="all-images my-3">
+                        @foreach ($images as $image)
+                            <div class="image-small">
+                                <img class="img-fluid img-sm" src="/images/products/{{$image->name}}" alt="">
+                            </div>
+                        @endforeach                        
+                    </div>
+                @endif
+
                 <h2 class="sub-title-line2">Recenzije</h2>
                 <br>
                 <button class="button-secondary-outline">Napiši recenziju</button>

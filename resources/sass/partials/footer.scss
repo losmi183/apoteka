@@ -1,5 +1,24 @@
 footer {
     background-color: $main-color;
+
     color: white;
-    padding: 20px 0 20px;
+    line-height: 1.6;
+
+    #header-up {
+        padding: 20px 0 20px;
+        text-align: center;
+        border-bottom: 1px solid #light-main;
+    }
+
+    #header-down {
+        padding: 20px 0 20px;
+    }
+
+    a {
+        color: white;
+    }
+    h3 {
+        color: $dark-main;
+        text-transform: uppercase;
+    }
 }

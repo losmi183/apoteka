@@ -54,13 +54,8 @@
             
     <div class="row">
         @include('partials.recomanded')
-    </div>
-    
-    <div class="spacer-lg"></div>
-    
-    <div class="row">
-        @include('partials.links')
-    </div>
+    </div>    
+
   </div>
 </div>
 

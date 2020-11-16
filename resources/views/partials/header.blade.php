@@ -40,22 +40,19 @@
         </div>
 
         <div class="col-lg-5 header-bottom-left" >
-            <div class="logo"><img class="img-fluid" src="/images/eskulapLogo.jpg" alt="Sc Eckulap Apoteka"></div>
+            <div class="logo"><img class="img-fluid" src="/images/logo2.jpg" alt="Sc Eckulap Apoteka"></div>
         </div>
 
         <div class="col-lg-7 header-bottom-right">
             <span class="phone">+387 (0)56 410 827</span>
             <div class="search-input">
-                <div class="input-container">
-
-                    <form action="/search" method="GET">
-                        
-                        <input name="search" type="text" placeholder="PRETRAGA">                    
-                        <button id="search-link"><i class="fa fa-search"></i></button>
-                    </form>
-
-                </div>
+                <form action="/search" method="GET">
+                    <input type="text" name="search" placeholder="PRETRAGA" class="rounded-input">
+                    <button class="search-button"><i class="fa fa-search"></i></button>
+                </form>
             </div>
+
+
             <a class="cart-button"><i class="fas fa-shopping-cart"></i>Proizvod (0)</a>        
         </div>
 

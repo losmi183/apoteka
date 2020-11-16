@@ -7,7 +7,7 @@
     @foreach ($randomProducts as $product)        
         <div class="col-md-3 box1">
             <div class="shop-image">
-                <a href="product/{{$product->id}}">
+                <a href="/product/{{$product->id}}">
                     <img class="img-fluid" src="/images/products/{{$product->image}}">
                 </a>
             </div>

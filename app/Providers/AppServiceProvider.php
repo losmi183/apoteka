@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         // Share categories to all views
-        $categories = Category::all();
+        $categories = Category::where('parent_id', 0)->get();
         View::share([
             'categories' => $categories,
         ]);

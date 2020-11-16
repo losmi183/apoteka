@@ -14,10 +14,13 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        
+
         for ($i=1; $i <= 10; $i++) { 
             Product::create([
                 'id' => $i,
                 'category_id' => 1,
+                'subcategory_id' => 6,
                 'ime' => 'Proizvod Imunitet '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
@@ -30,7 +33,8 @@ class ProductsTableSeeder extends Seeder
         for ($i=11; $i <= 20; $i++) { 
             Product::create([
                 'id' => $i,
-                'category_id' => 2,
+                'category_id' => 2,                
+                'subcategory_id' => 7,
                 'ime' => 'Proizvod za Bebe '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
@@ -44,6 +48,7 @@ class ProductsTableSeeder extends Seeder
             Product::create([
                 'id' => $i,
                 'category_id' => 3,
+                'subcategory_id' => 8,
                 'ime' => 'Proizvod za Mršavljenje '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
@@ -57,6 +62,7 @@ class ProductsTableSeeder extends Seeder
             Product::create([
                 'id' => $i,
                 'category_id' => 4,
+                'subcategory_id' => 9,
                 'ime' => 'Proizvod Kozmetika '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
@@ -70,6 +76,7 @@ class ProductsTableSeeder extends Seeder
             Product::create([
                 'id' => $i,                
                 'category_id' => 5,
+                'subcategory_id' => 10,
                 'ime' => 'Proizvod Potencija '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',

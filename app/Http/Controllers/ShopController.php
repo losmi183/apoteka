@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Images;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -13,19 +14,24 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($category_id = 0)
+    public function index($category_id = 0, $subcategory_id = 0)
     {
         if($category_id) {
-            $categoryName = Category::find($category_id)->name;
+            $category = Category::find($category_id);
+            $subcategories = Category::where('parent_id', $category_id)->get();
         } else {
             $categoryName = "Svi proizvodi";
         }
         
         $products = Product::when($category_id, function($query, $category_id) {
             return $query->where('category_id', $category_id);
-        })->paginate(6);
+        })
+        ->when($subcategory_id, function($query, $subcategory_id) {
+            return $query->where('subcategory_id', $subcategory_id);
+        })
+        ->paginate(3);
 
-        return view('shop', compact('products', 'categoryName'));
+        return view('shop', compact('products', 'category', 'subcategories', 'category_id', 'subcategory_id'));
     }
 
     /**
@@ -59,8 +65,11 @@ class ShopController extends Controller
     {
         $categoryName = Category::find($product->category_id)->name;
 
+        $images = Images::where('product_id', $product->id)->get();
+
         $randomProducts = Product::where('id', '!=', $product->id)->inRandomOrder()->take(4)->get();
-        return view('product', compact('product', 'randomProducts', 'categoryName'));
+        
+        return view('product', compact('product', 'randomProducts', 'categoryName', 'images'));
     }
 
     /**
@@ -103,12 +112,11 @@ class ShopController extends Controller
      * 
      */
     public function search(Request $request)
-    {
+    {   
+        $search = $request->search;
 
-        $categoryName = $request->search;
+        $products = Product::where('ime', 'like', '%'.$request->search.'%')->paginate(15);
 
-        $products = Product::where('ime', 'like', '%'.$request->search.'%')->paginate(6);
-
-        return view('shop', compact('products', 'categoryName'));
+        return view('search', compact('products', 'search'));
     }
 }

@@ -2,4 +2,20 @@ nav.navbar {
     li a {
         text-transform: uppercase;
     }
+    // border-bottom: 1px solid $gray-font;
+    border-top: 1px solid $gray-font;
+    box-shadow: 3px 3px 6px $gray-font;
+
+    .navbar-brand {
+        img {
+            height: 40px;
+        }
+        
+    }
+}
+
+// Overriding bootstrap active class
+.nav-link.active {
+    // color: $main-color !important;
+    color: #888 !important;
 }

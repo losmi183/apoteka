@@ -16,24 +16,11 @@ use App\Http\Controllers\ShopController;
 */
 
 Route::get('/', [HomepageController::class, 'index']);
-
-Route::get('/shop/{category_id?}', [ShopController::class, 'index']);
+Route::get('/shop/{category_id?}/{subcategory_id?}', [ShopController::class, 'index']);
 Route::get('/search', [ShopController::class, 'search']);
 Route::get('/product/{product}', [ShopController::class, 'show']);
 
 
-Route::view('/product', 'product');
-Route::view('/cart', 'cart');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
