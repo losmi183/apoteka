@@ -16,11 +16,11 @@
                         @foreach ($products as $product)
                             <div class="col-md-3 box1">
                                 <div class="shop-image">
-                                    <a href="/product/{{$product->id}}">
+                                    <a href="/proizvodi/{{$product->slug}}">
                                         <img class="img-fluid" src="/images/products/{{$product->image}}">
                                     </a>
                                 </div>
-                                <a href="/product/{{$product->id}}">
+                                <a href="/proizvodi/{{$product->slug}}">
                                     <h3>{{$product->ime}}</h3>
                                 </a>
                                 <p>{{ Str::words($product->opis, 10) }}</p>

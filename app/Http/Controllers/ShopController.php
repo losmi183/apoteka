@@ -14,22 +14,48 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($category_id = 0, $subcategory_id = 0)
-    {
-        if($category_id) {
-            $category = Category::find($category_id);
+    public function index($category_slug = 0, $subcategory_slug = 0)
+    {   
+        // Get query string for sorting
+        $sort = request()->query('sort');        
+
+        // Check if we have slug for category in route
+        if($category_slug) {
+            // Get Category Based on slug
+            $category = Category::where('slug', $category_slug)->first();
+            $category_id = $category->id;
+            // Get all subcategories for this category
             $subcategories = Category::where('parent_id', $category_id)->get();
         } else {
             $categoryName = "Svi proizvodi";
+            $category_id = 0;
         }
-        
+
+        // Check if we have slug for subcategory in route
+        if($subcategory_slug) {
+            // Get subcategory based on slug
+            $subcategory = Category::where('slug', $subcategory_slug)->first();
+            $subcategory_id = $subcategory->id;
+        } else {
+            $subcategory_id = 0;
+        }  
+              
+        /**
+         * 
+         * MAIN QUERY TO MYSQL
+         * 
+         */
+        // Conditional query, based on route $category_id and $subcategory_id
         $products = Product::when($category_id, function($query, $category_id) {
             return $query->where('category_id', $category_id);
         })
         ->when($subcategory_id, function($query, $subcategory_id) {
             return $query->where('subcategory_id', $subcategory_id);
         })
-        ->paginate(3);
+        ->when($sort, function($query, $sort) {
+            return $query->orderBy('cena', ($sort == 'low_hi' ? 'asc' : 'desc'));
+        })
+        ->paginate(9);
 
         return view('shop', compact('products', 'category', 'subcategories', 'category_id', 'subcategory_id'));
     }
@@ -61,8 +87,11 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($product_slug)
     {
+        // Find Product based on slug
+        $product = Product::where('slug', $product_slug)->first();
+
         $categoryName = Category::find($product->category_id)->name;
 
         $images = Images::where('product_id', $product->id)->get();

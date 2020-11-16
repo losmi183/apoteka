@@ -16,9 +16,11 @@ use App\Http\Controllers\ShopController;
 */
 
 Route::get('/', [HomepageController::class, 'index']);
-Route::get('/shop/{category_id?}/{subcategory_id?}', [ShopController::class, 'index']);
-Route::get('/search', [ShopController::class, 'search']);
-Route::get('/product/{product}', [ShopController::class, 'show']);
+Route::get('/prodavnica/{category_slug?}/{subcategory_slug?}', [ShopController::class, 'index']);
+Route::get('/pretraga', [ShopController::class, 'search']);
+Route::get('/proizvodi/{product_slug}', [ShopController::class, 'show']);
+
+
 
 
 Auth::routes();

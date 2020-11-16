@@ -25,7 +25,7 @@ class CategoriesTableSeeder extends Seeder
         ]);
         Category::create([
             'name' => 'Mršavljenje',
-            'slug' => 'mršavljenje'
+            'slug' => 'mrsavljenje'
         ]);
         Category::create([
             'name' => 'Kozmetika',
@@ -39,77 +39,77 @@ class CategoriesTableSeeder extends Seeder
             // Subcategories 
             Category::create([
                 'name' => 'Vitamini',
-                'slug' => 'vitamini',
+                'slug' => 'imunitet-vitamini',
                 'parent_id' => 1
             ]);
             Category::create([
                 'name' => 'Minerali',
-                'slug' => 'minerali',
+                'slug' => 'imunitet-minerali',
                 'parent_id' => 1
             ]);
             Category::create([
                 'name' => 'Čajevi',
-                'slug' => 'cajevi',
+                'slug' => 'imunitet-cajevi',
                 'parent_id' => 1
             ]);        
             Category::create([
                 'name' => 'Vitamini',
-                'slug' => 'vitamini',
+                'slug' => 'bebi-program-vitamini',
                 'parent_id' => 2
             ]);
             Category::create([
                 'name' => 'Minerali',
-                'slug' => 'minerali',
+                'slug' => 'bebi-program-minerali',
                 'parent_id' => 2
             ]);
             Category::create([
                 'name' => 'Čajevi',
-                'slug' => 'cajevi',
+                'slug' => 'bebi-program-cajevi',
                 'parent_id' => 2
             ]);        
             Category::create([
                 'name' => 'Vitamini',
-                'slug' => 'vitamini',
+                'slug' => 'mrsavljenje-vitamini',
                 'parent_id' => 3
             ]);
             Category::create([
                 'name' => 'Minerali',
-                'slug' => 'minerali',
+                'slug' => 'mrsavljenje-minerali',
                 'parent_id' => 3
             ]);
             Category::create([
                 'name' => 'Čajevi',
-                'slug' => 'cajevi',
+                'slug' => 'mrsavljenje-cajevi',
                 'parent_id' => 3
             ]);        
             Category::create([
                 'name' => 'Vitamini',
-                'slug' => 'vitamini',
+                'slug' => 'kozmetika-vitamini',
                 'parent_id' => 4
             ]);
             Category::create([
                 'name' => 'Minerali',
-                'slug' => 'minerali',
+                'slug' => 'kozmetika-minerali',
                 'parent_id' => 4
             ]);
             Category::create([
                 'name' => 'Čajevi',
-                'slug' => 'cajevi',
+                'slug' => 'kozmetika-cajevi',
                 'parent_id' => 4
             ]);        
             Category::create([
                 'name' => 'Vitamini',
-                'slug' => 'vitamini',
+                'slug' => 'potencija-vitamini',
                 'parent_id' => 5
             ]);
             Category::create([
                 'name' => 'Minerali',
-                'slug' => 'minerali',
+                'slug' => 'potencija-minerali',
                 'parent_id' => 5
             ]);
             Category::create([
                 'name' => 'Čajevi',
-                'slug' => 'cajevi',
+                'slug' => 'potencija-cajevi',
                 'parent_id' => 5
             ]);        
     }

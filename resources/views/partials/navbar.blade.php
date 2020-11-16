@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="/">NASLOVNA</a></li>
-            {{-- <li class="nav-item"><a class="nav-link" href="/shop">PRODAVNICA</a></li> --}}
+            {{-- <li class="nav-item"><a class="nav-link" href="/prodavnica">PRODAVNICA</a></li> --}}
             {{-- <li class="nav-item"><a class="nav-link" href="/">AKCIJE</a></li> --}}
 
             @foreach ($categories as $category)
@@ -19,7 +19,7 @@
                   @isset($category_id)
                       {{ isActive($category_id, $category->id) }}
                   @endisset                 
-                " href="/shop/{{$category->id}}">{{$category->name}}</a>
+                " href="/prodavnica/{{$category->slug}}">{{$category->name}}</a>
               </li>
             @endforeach
           </ul>

@@ -20,3 +20,12 @@ function allSubcategories()
 {
     return DB::table('categories')->where('parent_id', '!=', 0)->get();
 }
+
+function appendQuery($key, $value)
+{
+    // Create new query string: ?key=value
+    $newQueries = [$key => $value];
+
+    // A
+    return request()->fullUrlWithQuery($newQueries);
+}

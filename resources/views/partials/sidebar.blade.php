@@ -7,7 +7,7 @@
                 <ul class="sidebar-list">
                     @if(isset($subcategories))
                         @foreach ($subcategories as $subcategory)   
-                            <a href="/shop/{{$category->id}}/{{$subcategory->id}}"><li class="sidebar-item 
+                            <a href="/prodavnica/{{$category->slug}}/{{$subcategory->slug}}"><li class="sidebar-item 
                             @isset($subcategory_id)
                                 {{ isActive($subcategory_id, $subcategory->id) }}
                             @endisset         
