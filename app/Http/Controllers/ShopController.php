@@ -16,48 +16,46 @@ class ShopController extends Controller
      */
     public function index($category_slug = 0, $subcategory_slug = 0)
     {   
-        // Get query string for sorting
-        $sort = request()->query('sort');        
-
-        // Check if we have slug for category in route
-        if($category_slug) {
-            // Get Category Based on slug
-            $category = Category::where('slug', $category_slug)->first();
-            $category_id = $category->id;
-            // Get all subcategories for this category
-            $subcategories = Category::where('parent_id', $category_id)->get();
-        } else {
-            $categoryName = "Svi proizvodi";
-            $category_id = 0;
-        }
-
+        
+        // Get Category Based on slug
+        $category = Category::where('slug', $category_slug)->first();
+        // Get all subcategories for this category
+        $subcategories = Category::where('parent_id', $category->id)->get();
+        
+        
         // Check if we have slug for subcategory in route
         if($subcategory_slug) {
             // Get subcategory based on slug
             $subcategory = Category::where('slug', $subcategory_slug)->first();
-            $subcategory_id = $subcategory->id;
         } else {
-            $subcategory_id = 0;
+            $subcategory = 0;
         }  
-              
+        
+        // Get query string for sorting
+        $cena = request()->query('cena');       
+
         /**
          * 
          * MAIN QUERY TO MYSQL
          * 
          */
         // Conditional query, based on route $category_id and $subcategory_id
-        $products = Product::when($category_id, function($query, $category_id) {
-            return $query->where('category_id', $category_id);
-        })
-        ->when($subcategory_id, function($query, $subcategory_id) {
-            return $query->where('subcategory_id', $subcategory_id);
-        })
-        ->when($sort, function($query, $sort) {
-            return $query->orderBy('cena', ($sort == 'low_hi' ? 'asc' : 'desc'));
-        })
+        $products = Product::where('category_id', $category->id)
+        ->selectBySubcategory($subcategory)
+        // ->when($subcategory, function($query, $subcategory) {
+        //     return $query->where('subcategory_id', $subcategory->id);
+        // })
+        ->sortPrice($cena)
+
         ->paginate(9);
 
-        return view('shop', compact('products', 'category', 'subcategories', 'category_id', 'subcategory_id'));
+        // return view('shop', compact('products', 'category', 'subcategories', 'subcategory'));
+        return view('shop', [
+            'products' => $products,
+            'selected_category' => $category,
+            'all_subcategories' => $subcategories,
+            'selected_subcategory' => $subcategory
+        ]);
     }
 
     /**
@@ -142,9 +140,24 @@ class ShopController extends Controller
      */
     public function search(Request $request)
     {   
+        $request->validate([
+            'search' => 'min:3'
+        ],
+        [
+            'search.min' => 'Potrebna su najmanje 3 slova za pretragu'
+        ]);
+
         $search = $request->search;
 
-        $products = Product::where('ime', 'like', '%'.$request->search.'%')->paginate(15);
+        $cena = request()->cena;
+
+
+        // $products = Product::where('ime', 'like', "%$search%")->get();
+        $products = Product::search($search)
+        ->sortPrice($cena)
+        ->paginate(12);
+
+        // return $products;
 
         return view('search', compact('products', 'search'));
     }

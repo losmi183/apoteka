@@ -7,6 +7,8 @@
 require('./bootstrap');
 require('./custom/navbar.js');
 require('./custom/product.js');
+require('./custom/admin/create-edit.js');
+require('./custom/admin/admin-panel.js');
 
 window.Vue = require('vue');
 

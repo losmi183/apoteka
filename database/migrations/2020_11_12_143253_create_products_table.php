@@ -32,12 +32,12 @@ class CreateProductsTable extends Migration
 
             $table->string('ime');
             $table->string('proizvodjac');
-            $table->string('akcija');
-            $table->string('pakovanje');
+            $table->string('akcija')->nullable();
+            $table->string('pakovanje')->nullable();
             $table->boolean('dostupnost')->default(true);
             $table->integer('cena');
             $table->text('opis');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

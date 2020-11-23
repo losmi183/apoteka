@@ -20,10 +20,10 @@
                         @endforeach                        
                     </div>
                 @endif
-
+{{-- 
                 <h2 class="sub-title-line2">Recenzije</h2>
                 <br>
-                <button class="button-secondary-outline">Napiši recenziju</button>
+                <button class="button-secondary-outline">Napiši recenziju</button> --}}
             </div>         
             <div class="col-md-8">
                 <div class="product-info">
@@ -40,7 +40,7 @@
                         <div class="col-md-10">{{$product->pakovanje}}</div>
                         <hr class="d-lg-none">
                         <div class="col-md-2">Dostupnost</div>
-                        <div class="col-md-10">{{dostupno($product->dostupnost)}}</div>
+                        <div class="col-md-10">{{$product->dostupnost}}</div>
                         <hr class="d-lg-none">
                     </div>
 
@@ -48,7 +48,7 @@
 
                     <div class="price">
                         <p class="mb-2">Cijena sa PDV-om</p>
-                        <h1>44,22 KM</h1>
+                        <h1>{{presentPrice($product->cena)}}</h1>
                     </div>
 
                     <hr>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-sm-3">
                             <label>Količina</label>
-                            <input class="quantity" type="number" value="1">
+                            <input class="quantity" type="number" value="1" min="1">
                         </div>
                     </div>
 
@@ -85,26 +85,7 @@
                     
 
                     <div class="description">
-                        <h2 class="sub-title-line">Opis proizvoda</h2>
-                        <h2 class="mt-3 mb-4 font-weight-normal">Ulje crnog kumina</h2>
-
-                        <strong>Namjena</strong>
-                        <p>Koristi se kao dodatak ishrani.</p>
-
-                        <strong>Sastav</strong>
-                        <p>Ulje biljke crni kumin.</p>
-
-                        <strong>Primjena</strong>
-                        <ul class="my-list">
-                            <li class="my-list-item">jačanje imuniteta</li>
-                            <li class="my-list-item">kod alergija</li>
-                            <li class="my-list-item">poboljšava cirkulaciju</li>
-                        </ul>
-
-                        <strong>Doziranje i način primjene</strong>
-                        <ul class="my-list">
-                            <li class="my-list-item">1 kafena kašika, 3 puta na dan</li>
-                        </ul>    
+                        {!! $product->opis !!}
                     </div>
 
                     <br>
@@ -128,10 +109,6 @@
         </div>
 
         <div class="spacer-lg"></div>
-
-        <div class="row">
-            @include('partials.links')
-        </div>
    
     </div>
 

@@ -7,6 +7,4 @@ $(document).ready(function() {
         $('#img-lg').attr('src', src2);
 
     });
-
-
 });

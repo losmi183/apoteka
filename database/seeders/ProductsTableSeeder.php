@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        $price = [1611, 905, 2122, 1411, 4585, 2155, 1998, 526, 348, 758, 902];
 
         for ($i=1; $i <= 10; $i++) { 
             Product::create([
@@ -26,7 +26,7 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
                 'pakovanje' => '250 ml',
-                'cena' => 29,
+                'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => $i.'.jpg '
             ]);
@@ -41,7 +41,7 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
                 'pakovanje' => '250 ml',
-                'cena' => 29,
+                'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => $i.'.jpg '
             ]);
@@ -56,7 +56,7 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
                 'pakovanje' => '250 ml',
-                'cena' => 29,
+                'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => $i.'.jpg '
             ]);
@@ -71,7 +71,7 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
                 'pakovanje' => '250 ml',
-                'cena' => 29,
+                'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => $i.'.jpg '
             ]);
@@ -86,7 +86,7 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'akcija' => 'popust',
                 'pakovanje' => '250 ml',
-                'cena' => 29,
+                'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => $i.'.jpg '
             ]);

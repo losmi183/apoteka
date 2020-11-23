@@ -77,7 +77,7 @@
                 <span class="viber mb-2"><i class="fab fa-viber"></i>Viber</span>
                 <div class="search-input mb-2">
                     <form action="/pretraga" method="GET">
-                        <input type="text" name="search" placeholder="PRETRAGA" class="rounded-input">
+                        <input type="text" name="search" placeholder="PRETRAGA" class="rounded-input" value="{{request()->input('search')}}">
                         <button class="search-button"><i class="fa fa-search"></i></button>
                     </form>
                 </div>

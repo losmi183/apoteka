@@ -16,8 +16,8 @@
             @foreach ($categories as $category)
               <li class="nav-item">
                 <a class="nav-link
-                  @isset($category_id)
-                      {{ isActive($category_id, $category->id) }}
+                  @isset($selected_category)
+                      {{ isActive($selected_category->id, $category->id) }}
                   @endisset                 
                 " href="/prodavnica/{{$category->slug}}">{{$category->name}}</a>
               </li>

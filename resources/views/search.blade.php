@@ -7,10 +7,8 @@
 
             <div class="col-12">
                 <div class="row">
-
-                    <div class="col-12 d-flex justify-content-center mb-3">
-                        {{$products->appends(request()->input())->links()}}
-                    </div>
+                    
+                    @include('partials.search')
 
                     @if(count($products) > 0)
                         @foreach ($products as $product)

@@ -1,10 +1,8 @@
 .my-list {
-
     .my-list-item {
         position: relative;
         padding-left: 20px;
     }
-
     .my-list-item:before {
         content: '';
         display: block;
@@ -15,7 +13,6 @@
         top: 5px;
         left: 0;
     }
-
 }
 
 .line {
