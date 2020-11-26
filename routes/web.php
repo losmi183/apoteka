@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SubcategoriesController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +21,36 @@ use App\Http\Controllers\CategoriesController;
 |
 */
 
-Route::get('/', [HomepageController::class, 'index']);
+/**
+ * Shop Routes
+ */
+Route::get('/', [HomepageController::class, 'index'])->name('pocetna');
 Route::get('/prodavnica/{category_slug}/{subcategory_slug?}', [ShopController::class, 'index']);
 Route::get('/pretraga', [ShopController::class, 'search']);
 Route::get('/proizvodi/{product_slug}', [ShopController::class, 'show']);
 
-
+/**
+ * Auth Routes
+ */
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+/**
+ * Cart Routes
+ */
+Route::resource('/cart', CartController::class);
+
+Route::get('/cartDelete', function() {
+    Cart::destroy();
+});
+Route::get('/cart/remove/{rowId}', [CartController::class, 'remove']);
+Route::post('cart/quantity', [CartController::class, 'quantityChange']);
+
+/**
+ * Order
+ */
+Route::post('/order', [OrderController::class, 'store']);
 
 
 /**
@@ -47,6 +72,22 @@ Route::delete('/product/delete/{product}', [ProductsController::class, 'destroy'
 Route::get('/product/fetchSubcategories/{category_id}', [ProductsController::class, 'fetchSubcategories']);
 Route::post('/product/createSlug', [ProductsController::class, 'createSlug']);
 
-// Categories Crud
-Route::get('/categoriesAdmin/{category_id?}', [CategoriesController::class, 'index'])->name('categories');
 
+
+// Categories Crud
+Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');
+Route::post('/category', [CategoriesController::class, 'store'])->name('category.store');
+Route::delete('/category/{category}', [CategoriesController::class, 'destroy'])->name('category.delete');
+
+Route::get('/subcategories/{category}', [SubcategoriesController::class, 'index']);
+Route::post('/subcategory', [SubcategoriesController::class, 'store']);
+Route::delete('/subcategory/{category}', [SubcategoriesController::class, 'destroy']);
+
+// Ajax Requests
+Route::post('/category/createSlug', [ProductsController::class, 'createSlug']);
+
+
+// Orders Routes
+Route::get('/admin/orders/{status?}', [OrderController::class, 'index']); 
+Route::get('/admin/order/{order}', [OrderController::class, 'show']); 
+Route::post('/order/status/{order}', [OrderController::class, 'statusChange']); 

@@ -94,7 +94,11 @@ class ShopController extends Controller
 
         $images = Images::where('product_id', $product->id)->get();
 
-        $randomProducts = Product::where('id', '!=', $product->id)->inRandomOrder()->take(4)->get();
+        $randomProducts = Product::where('id', '!=', $product->id)
+            ->where('category_id', '!=', 'null')
+            ->where('subcategory_id', '!=', 'null')
+            ->inRandomOrder()
+            ->take(4)->get();
         
         return view('product', compact('product', 'randomProducts', 'categoryName', 'images'));
     }

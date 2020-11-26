@@ -43,10 +43,12 @@
       <div id="sidebar">
 
           <ul class="sidebar-list">
-              <li class="sidebar-item"><a href="/products"><i class="fas fa-cogs"></i>Proizvodi</a></li>
-              <li class="sidebar-item"><a href="/categoriesAdmin"><i class="fas fa-cogs"></i>Kategorije</a></li>
-              <li class="sidebar-item"><a href="/products"><i class="fas fa-cogs"></i>Porudzbine</a></li>
-              <li class="sidebar-item"><a href="/products"><i class="fas fa-cogs"></i>User managment</a></li>
+              <li class="sidebar-item"><a href="/admin"><i class="fas fa-tachometer-alt"></i></i>Dashboard</a></li>
+              <li class="sidebar-item"><a href="/products"><i class="fab fa-product-hunt"></i>Proizvodi</a></li>
+              <li class="sidebar-item"><a href="/categories"><i class="fas fa-cogs"></i>Kategorije</a></li>
+              <li class="sidebar-item"><a href="/admin/orders"><i class="fas fa-shipping-fast"></i></i>Porudzbine</a></li>
+              <li class="sidebar-item"><a href="/users"><i class="fas fa-cogs"></i>User managment</a></li>
+              <li class="sidebar-item"><a href="/"><i class="fas fa-home"></i>Frontend</a></li>
               <li class="sidebar-item"><a href="/products"><i class="fas fa-sign-out-alt"></i>Izloguj se</a></li>
           </ul>
   
@@ -54,11 +56,7 @@
       <!-- /#sidebar-wrapper -->
 
       <div id="content">
-          {{-- <div class="panel">
-              <div class="panel-header"><h5>Add Product</h5></div>
-              <div class="panel-body"></div>
-              <div class="panel-footer"></div>
-          </div> --}}
+          @include('admin.admin-messages')
           @yield('content')
 
       </div>

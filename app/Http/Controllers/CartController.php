@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
-class HomepageController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,8 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $randomProducts = Product::where('category_id', '!=', 'null')
-            ->where('subcategory_id', '!=', 'null')
-            ->inRandomOrder()
-            ->take(4)->get();
-
-        return view('home', compact('randomProducts'));
+        // dd(Cart::content());
+        return view('cart');
     }
 
     /**
@@ -40,7 +37,17 @@ class HomepageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::add([
+            'id' => $request->id, 
+            'name' => $request->name, 
+            'qty' => $request->qty, 
+            'price' => $request->price, 
+            'weight' => 550,
+            'options' => ['image' => $request->image]
+        ]);
+
+        return back()->with('success', 'Proizvod je dodat u korpu');
+
     }
 
     /**
@@ -86,5 +93,35 @@ class HomepageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Custom Cart methods
+     */
+
+
+     /**
+     * Remove the specified row from cart
+     *
+     * @param  int  $rowId
+     * @return \Illuminate\Http\Response
+     */
+    public function remove($rowId)
+    {
+        Cart::remove($rowId);
+
+        return back()->with('success', 'Proizvod je uklonjen iz korpe');
+    }
+     /**
+     * Change quantity for specified row
+     *
+     * @param  int  $rowId
+     * @return \Illuminate\Http\Response
+     */
+    public function quantityChange(Request $request)
+    {
+        Cart::update($request->rowId, $request->quantity); 
+
+        return back()->with('success', 'Promenjena je količina');
     }
 }

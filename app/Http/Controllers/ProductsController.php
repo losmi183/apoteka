@@ -31,6 +31,7 @@ class ProductsController extends Controller
             ->selectBySubcategoryId($subcategory_id)
             ->sortName(request()->ime)
             ->sortPrice(request()->cena)
+            ->orderBy('updated_at', 'DESC')
             ->paginate(12);
 
         return view('admin.products.index', compact('products', 'category_id', 'subcategories'));

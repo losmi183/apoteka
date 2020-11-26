@@ -7,4 +7,11 @@ $(document).ready(function() {
         $('#img-lg').attr('src', src2);
 
     });
+
+    // Quantity move to form
+    $('#kolicina').change(function() {
+        var value = $('#kolicina').val();
+        $('#qty').val(value);
+    });
+
 });

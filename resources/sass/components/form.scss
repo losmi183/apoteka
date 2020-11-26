@@ -48,3 +48,10 @@ input.quantity {
     max-width: 60px;    
     padding: 5px;
 }
+
+
+// Required input
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }

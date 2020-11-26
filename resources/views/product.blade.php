@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <div class="container">
+    <div id="cart" class="container">
         <div class="row">
             <div class="col-md-4">
 
@@ -26,8 +26,8 @@
                 <button class="button-secondary-outline">Napiši recenziju</button> --}}
             </div>         
             <div class="col-md-8">
-                <div class="product-info">
-                    <h1 class="title-color">{{$product->name}}</h1>
+                <div class="product-info">                
+                    <h1 class="title-color">{{$product->ime}}</h1>
 
                     <div class="row basic-info">
                         <div class="col-md-2">Proizvođač</div>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-sm-3">
                             <label>Količina</label>
-                            <input class="quantity" type="number" value="1" min="1">
+                            <input id="kolicina" class="quantity" type="number" value="1" min="1">
                         </div>
                     </div>
 
@@ -71,20 +71,30 @@
                     <br>
 
                     <div class="cart-buttons">
-                        <button class="button-primary">
-                            <i class="fa fa-shopping-cart"></i>
-                            Dodaj u korpu
-                            <i class="fa fa-plus-circle"></i>
-                        </button>
+                        <form class="d-inline" action="/cart" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$product->id}}" name="id">
+                            <input type="hidden" value="{{$product->ime}}" name="name">
+                            <input id="qty" type="hidden" value="1" name="qty">
+                            <input type="hidden" value="{{$product->cena}}" name="price">
+                            <input type="hidden" value="{{$product->image}}" name="image">
+                            <button class="button-primary">
+                                <i class="fa fa-shopping-cart"></i>
+                                Dodaj u korpu
+                                <i class="fa fa-plus-circle"></i>
+                            </button>
+                        </form>
                         <button class="button-secondary">
                             <i class="fa fa-shopping-cart"></i>
                             U listu želja
                             <i class="fa fa-plus-circle"></i>
                         </button>
                     </div>
-                    
 
-                    <div class="description">
+                    <div class="line"></div>
+                    
+                    <h2 class="my-3">Opis proizvoda</h2>
+                    <div class="description my-3">
                         {!! $product->opis !!}
                     </div>
 
@@ -93,7 +103,7 @@
                     <a href="#">
                         <div class="download d-flex">
                             <i class="fas fa-file-pdf"></i>
-                            <span>Detaljno putstvo
+                            <span>Detaljno uputstvo
                                 <p>pdf dokument | 0.47MB</p>
                             </span>
                         </div>

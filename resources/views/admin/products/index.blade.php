@@ -80,8 +80,8 @@
                         {{-- <td>{{$product->id}}</td> --}}
                         {{-- <td>{{$product->slug}}</td> --}}
                         <td>{{$product->ime}}</td>
-                        <td>{{$product->category->name}}</td>
-                        <td>{{$product->subcategory->name}}</td>
+                        <td>@if(!empty($product->category)) {{ $product->category->name }} @endif</td>
+                        <td>@if(!empty($product->subcategory)) {{ $product->subcategory->name }} @endif</td>
                         {{-- <td>{{$product->proizvodjac}}</td> --}}
                         {{-- <td>{{$product->akcija}}</td> --}}
                         {{-- <td>{{$product->pakovanje}}</td> --}}

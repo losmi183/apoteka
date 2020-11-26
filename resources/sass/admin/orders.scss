@@ -1,0 +1,20 @@
+.order-danger {
+    background: rgb(255, 213, 213) !important;
+}
+.order-warning {
+    background: rgb(255, 242, 185) !important;
+}
+.order-success {
+    background: rgb(192, 246, 187) !important;
+}
+
+
+#order-show {
+    .card-header {
+        background: #fff;
+    }
+
+    .fa-eye {
+        color: green;
+    }
+}

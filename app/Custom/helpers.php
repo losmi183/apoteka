@@ -36,3 +36,26 @@ function presentPrice($value)
 {
     return $value / 100 . ' KM'; 
 }
+
+function presentPriceInt($value) : int
+{
+    return $value / 100; 
+}
+
+// Order helpers
+
+function orderClass($status)
+{
+    if ($status == 1) {
+        return 'order-danger';
+    } 
+    else if ($status == 2) {
+        return 'order-warning';
+    }
+    else if ($status == 3) {
+        return 'order-success';
+    }
+    else  {
+        return '';
+    }
+}

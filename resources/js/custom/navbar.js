@@ -9,6 +9,4 @@ $(document).ready(function() {
     $(window).on('scroll', function (e) {
         $('.navbar .navbar-brand')[$(window).scrollTop() >= 200 ? 'addClass' : 'removeClass']('d-inline-block');
     });
-
-
 });

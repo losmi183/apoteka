@@ -7,16 +7,16 @@
 {{-- <h1>{{dd($categories)}}</h1> --}}
     <div class="card m-3">
         <div class="card-header">
-            <span class='admin-title'>Kategorije</span>
+            <span class='admin-title'>Podkategorije koje pripadaju kategoriji: {{$category->name}}</span>
         </div>
         <div class="card-body row">      
             <div class="col-6">
 
                 <div class="controls mt-3 mb-3 border p-3">
-                    <form action="/category" method="POST">
+                    <form action="/subcategory" method="POST">
                         @csrf
-                        <input type="hidden" name="parent_id" value="0">
-                        <label class=" font-weight-bold mb-1">Kreiraj novu kategoriju</label>
+                        <input type="hidden" name="parent_id" value="{{$category->id}}">
+                        <label class=" font-weight-bold mb-1">Kreiraj novu podkategoriju</label>
                         <hr>
                         <div class="form-group row">
                             <label class="col-md-4 col-lg-2 mt-2">Naziv</label>
@@ -60,11 +60,11 @@
                         <td>{{$category->name}}</td>
                         <td>{{$category->slug}}</td>
                         <td>
-                            <a href="/subcategories/{{$category->id}}" class="btn btn-success">Podkategorije</a>
-                            <form class="d-inline" action="/category/{{$category->id}}" method="POST">
+                            {{-- <a href="/subcategories/{{$category->id}}" class="btn btn-success">Podkategorije</a> --}}
+                            <form class="d-inline" action="/subcategory/{{$category->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('Brisanjem kategorije Obrisaćete i sve pripadajuće podkategorije!');" class="btn btn-danger">Obriši</button>
+                                <button onclick="return confirm('Da li ste sigurni?');" class="btn btn-danger">Obriši</button>
                             </form>
                         </td>
                     </tr>

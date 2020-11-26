@@ -142,7 +142,13 @@
                             <label class="col-md-4 col-form-label text-md-right">Cena </label>
 
                             <div class="col-md-6">
-                                <input step="any" min="0.00" type="number" class="form-control @error('cena') is-invalid @enderror" name="cena" value="{{ old('cena') }}"  autocomplete="cena" autofocus>
+                                
+                                <div class="input-group mb-3">
+                                    <input step="any" min="0.00" type="number" class="form-control @error('cena') is-invalid @enderror" name="cena" value="{{ old('cena') }}"  autocomplete="cena" autofocus>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">KM</span>
+                                    </div>
+                                  </div>
 
                                 @error('cena')
                                     <span class="invalid-feedback" role="alert">
