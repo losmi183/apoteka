@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+/**
+ * Old design and admin scripts
+ */
 require('./bootstrap');
 require('./custom/navbar.js');
 require('./custom/product.js');
@@ -12,7 +15,17 @@ require('./custom/admin/admin-panel.js');
 require('./custom/admin/category.js');
 require('./custom/cart.js');
 
-window.Vue = require('vue');
+/**
+ * Frontend Scripts
+ */
+require('./frontend/slideshow.js');
+require('./frontend/navbar-fixed.js');
+require('./frontend/slick.js');
+require('./frontend/slick-custom.js');
+require('./frontend/product-added.js');
+require('./frontend/image-zoom.js');
+
+// window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActionsController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
@@ -22,12 +23,18 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 */
 
 /**
- * Shop Routes
+ * Home page
  */
 Route::get('/', [HomepageController::class, 'index'])->name('pocetna');
+/**
+ * Shop Routes
+ */
 Route::get('/prodavnica/{category_slug}/{subcategory_slug?}', [ShopController::class, 'index']);
 Route::get('/pretraga', [ShopController::class, 'search']);
 Route::get('/proizvodi/{product_slug}', [ShopController::class, 'show']);
+Route::get('action/{slug}', [ShopController::class, 'action']);
+
+
 
 /**
  * Auth Routes
@@ -91,3 +98,7 @@ Route::post('/category/createSlug', [ProductsController::class, 'createSlug']);
 Route::get('/admin/orders/{status?}', [OrderController::class, 'index']); 
 Route::get('/admin/order/{order}', [OrderController::class, 'show']); 
 Route::post('/order/status/{order}', [OrderController::class, 'statusChange']); 
+
+
+// Actions Routes
+Route::resource('actions', ActionsController::class);

@@ -1,0 +1,30 @@
+.sidebar {
+    border: 1px solid #ccc;
+
+    .sidebar-header {
+        color: white;
+        background: $primary-color;
+        text-transform: uppercase;
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    .sidebar-item {
+        display: flex;
+        justify-content: space-between;
+        margin: 3px 0;
+        padding: 0 3px;
+        span {
+            color: $dark-color;
+        }
+        &:hover {
+            text-decoration: none;
+            color: white;
+            background: lighten($primary-color, 30%);
+        }
+    }
+    .sidebar-item.active {
+        text-decoration: none;
+        background: lighten($primary-color, 15%);
+    }
+}

@@ -46,6 +46,7 @@
               <li class="sidebar-item"><a href="/admin"><i class="fas fa-tachometer-alt"></i></i>Dashboard</a></li>
               <li class="sidebar-item"><a href="/products"><i class="fab fa-product-hunt"></i>Proizvodi</a></li>
               <li class="sidebar-item"><a href="/categories"><i class="fas fa-cogs"></i>Kategorije</a></li>
+              <li class="sidebar-item"><a href="/actions"><i class="fas fa-cogs"></i>Akcije</a></li>
               <li class="sidebar-item"><a href="/admin/orders"><i class="fas fa-shipping-fast"></i></i>Porudzbine</a></li>
               <li class="sidebar-item"><a href="/users"><i class="fas fa-cogs"></i>User managment</a></li>
               <li class="sidebar-item"><a href="/"><i class="fas fa-home"></i>Frontend</a></li>

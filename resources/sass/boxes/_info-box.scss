@@ -1,0 +1,32 @@
+.info-box {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 0;
+
+    &:hover {
+       
+            transition: transform 0.3s;
+            transform: scale(1.05);
+       
+    }
+
+    i {
+        font-size: 30px;
+        color: $primary-color;
+        background: white;
+        border-radius: 50px;
+        padding: 20px;
+    }
+    h3 {
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 15px 0;
+    }
+    p {
+        color: white;
+        font-weight: 400;
+        font-size: 12px;
+
+    }
+}

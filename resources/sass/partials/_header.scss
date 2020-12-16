@@ -1,0 +1,163 @@
+header {
+    .top-header {
+        background: white;
+        border-bottom: 1px solid #aaa;
+        padding: 10px 0;
+        align-items: center;
+        text-transform: uppercase;
+
+        a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        i {
+            font-size: 20px;
+            margin: 6px;
+            background: lighten($primary-color, 15%) ;
+            padding: 8px;
+            border-radius: 30px;
+            color: white;
+
+
+            // color: $primary-color;
+            font-size: 18px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .shoping-cart {
+            position: relative;
+            small {
+                position: absolute;
+                top:-10px;
+                left: 32px;
+                z-index: 100000;
+                background: $secondary-color;
+                color: white;
+                border-radius: 10px;
+                padding: 5px;
+                width: 16px;
+                height: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .logo-wrapper {
+        padding: 20px 0;
+        .img-effect {
+            display: flex;
+            position: absolute;     
+            top: 0;
+            left: 0px;
+        }
+        .logo-text {
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            text-transform: uppercase;
+            font-weight: 800px;
+            font-size: 26   px;
+            text-decoration: none;
+            background: $secondary-color;
+            color: white;
+            display: block;
+            border-radius: 10px;
+            &:hover {
+                background: lighten($secondary-color, 10%);
+            }
+        }
+    }
+
+    .social-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        i {
+            font-size: 20px;
+            margin: 6px;
+            background: chartreuse;
+            padding: 8px;
+            border-radius: 30px;
+            color: white;
+        }
+        .fa-facebook {
+            background: $secondary-color;
+            transition: all 0.2s;
+            &:hover {
+                background: lighten($secondary-color, 15%);
+            }
+        }
+        .fa-viber {
+            background: 	#8f5db7;
+            transition: all 0.2s;
+            &:hover {
+                background: lighten(#8f5db7, 15%);
+            }
+        }
+        .fa-instagram {
+            background: $primary-color;
+            transition: all 0.2s;
+            &:hover {
+                background: lighten($primary-color, 15%);
+            }
+        }
+    }
+
+    .mail-wrapper {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        i {
+            font-size: 1.4rem;
+            margin-right: 2px;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+    .search-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        form {
+            margin: 9px 0;
+            border: 1px solid $primary-color;
+            border-radius: 20px;
+        }
+        input  {
+            border-radius:  30px 0 0 30px;     
+            border: none;
+            &:focus, &:active {
+                outline: none !important;
+                box-shadow: none;
+            }
+        }
+        .input-group-postpend {
+            display: flex;
+            align-items: center;
+            background: $primary-color;
+            border-radius: 0 30px 30px 0;
+            overflow: hidden;
+            a {
+                text-decoration: none;
+                background-color: white;
+                border: none;
+                height: 100%;
+                border-radius: 0;
+            }
+            i {
+                background: transparent ;
+                color: $primary-color;
+            }
+        }
+    }
+}

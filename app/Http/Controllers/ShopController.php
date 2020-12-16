@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
+use App\Models\Images;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Images;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -164,5 +165,14 @@ class ShopController extends Controller
         // return $products;
 
         return view('search', compact('products', 'search'));
+    }
+
+    public function action($slug)   
+    {
+        $action = Action::where('slug', $slug)->first();
+
+        $products = Product::where('action_id', $action->id)->paginate(9);
+
+        return view('action', compact('action', 'products'));
     }
 }

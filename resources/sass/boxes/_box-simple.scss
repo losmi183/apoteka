@@ -1,0 +1,73 @@
+.box-simple {
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    // border-radius: 10px;
+    overflow: hidden;
+
+    // box-shadow: 0 0 5px #ccc;
+
+    .box-simple-image {
+        display: flex;
+        justify-content: center;
+    }
+    cursor: pointer;
+    transition: box-shadow 0.1s;
+    &:hover {
+        box-shadow: 0 0 20px rgba(0,0,0,0.3),0 10px 15px 0 rgba(0,0,0,0.19) !important;
+    }
+
+    h3 {
+        text-align: center;
+        text-transform: uppercase;
+        color: $primary-color;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.box-simple2 {
+    // border-radius: 10px;
+    overflow: hidden;
+    // box-shadow: 0 0 10px #ccc;
+
+    .box-simple-image {
+        display: flex;
+        justify-content: center;
+    }
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    &:hover {
+        box-shadow: 0 0 20px rgba(0,0,0,0.3),0 10px 15px 0 rgba(0,0,0,0.19) !important;
+        // box-shadow: 0 0 10px rgba(0,0,0,0.3),0 10px 15px 0 rgba(0,0,0,0.19) !important;
+    }
+    .box-simple-text{
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h3 {
+        color: $secondary-color;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    p {
+        min-height: 80px;
+        text-align: center;
+    }
+}
+
+
+// Small devices (landscape phones, less than 768px) / Boxes only
+@media (max-width: 768px) { 
+    .box-simple, .box-simple2 {
+        margin-bottom: 20px;
+    }
+ }

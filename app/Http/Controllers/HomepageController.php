@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -14,12 +16,16 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $randomProducts = Product::where('category_id', '!=', 'null')
-            ->where('subcategory_id', '!=', 'null')
-            ->inRandomOrder()
-            ->take(4)->get();
+        // Fetch 4 Actions / LASTEST FIRST
+        $actions = Action::where('active', true)->orderBy('updated_at', 'DESC')->take(4)->get();
 
-        return view('home', compact('randomProducts'));
+        $randomProducts = Product::haveCatAndSubcats()->inRandomOrder()->take(8)->get();
+
+        $randomProductsAtAction = Product::haveCatAndSubcats()->where('action_id', '!=', null)->inRandomOrder()->take(12)->get();
+        
+        $randomCategories = Category::where('parent_id', 0)->inRandomOrder()->take(3)->get();
+
+        return view('home', compact('actions', 'randomProducts', 'randomCategories', 'randomProductsAtAction'));
     }
 
     /**

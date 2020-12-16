@@ -1,0 +1,37 @@
+.login-content {
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.3),0 10px 15px 0 rgba(0,0,0,0.19) !important;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+
+
+
+    width: 500px;
+    padding: 20px;
+
+    a {
+        display: block;
+        cursor: pointer;
+        color: #58595b !important;    
+        i {
+            color: #58595b !important;    
+        }
+    }
+    h5 {
+        font-size: 12px;
+        font-weight: 700;
+    }
+    label {
+        font-weight: 600;
+    }
+}
+
+// Modal responsivness
+@media (max-width: 530px) {    
+    .login-content {
+        position: fixed !important;
+        left: 0px !important;
+        right: 0px !important;
+        width: 97% !important;
+    }
+}

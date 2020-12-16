@@ -115,6 +115,11 @@ class Product extends Model
         });
     }
 
+    public function scopeHaveCatAndSubcats($query) 
+    {
+        return $query->where('category_id', '!=', 'null')->where('subcategory_id', '!=', 'null');
+    }
+
 
 
 }
