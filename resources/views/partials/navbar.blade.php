@@ -9,11 +9,9 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Početna</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Potencija</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Bebi program</a></li>    
-                <li class="nav-item"><a class="nav-link" href="/">Mršavljanje</a></li>    
-                <li class="nav-item"><a class="nav-link" href="/">Imunitet</a></li>    
+                @foreach ($categories as $category)
+                    <li class="nav-item"><a class="nav-link" href="/prodavnica/{{$category->slug}}">{{$category->name}}</a></li>
+                @endforeach
             </ul>          
         </div>   
 

@@ -43,34 +43,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        if(Cart::count() == 0) {
-            return redirect()->route('pocetna');
-        }
-
-        // Create Order
-        $order = Order::create([
-            'ime' => $request->ime,
-            'prezime' => $request->prezime,
-            'email' => $request->email,
-            'adresa' => $request->adresa,
-            'telefon' => $request->telefon,
-            'grad' => $request->grad,
-            'suma' => Cart::subtotal()
-        ]);
-
-        // ProductOrder
-        foreach(Cart::content() as $item) {
-            OrderProduct::create([
-                'product_id' => $item->id,
-                'order_id' => $order->id,
-                'quantity' => $item->qty
-            ]);
-        }
-
-        // Destroying Cart after ordering
-        Cart::destroy();
-
-        return view('thankyou');
+        
     }
 
     /**

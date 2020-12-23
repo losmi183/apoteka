@@ -99,7 +99,7 @@ class ActionsController extends Controller
             'slug' => [
                 'required',
                 'max:255',
-                Rule::unique('actions')->ignore($action->id),   
+                Rule::unique('actions')->ignore($this->id),   
             ],
             'discount' => 'required|numeric|min:0|max:100',
             'active' => 'required|boolean',

@@ -1,3 +1,8 @@
+button {
+    margin-bottom: 5px;
+}
+
+
 /* Top Area Styles  */
 #top-area {
     display: flex;
@@ -81,23 +86,24 @@
 
 
 /* Small devices (landscape phones, 576px and up) */
-@media (max-width: 575.98px) { 
+@media (max-width: 991.98px) { 
     #wrapper {
         display: block;
     }
 }
-@media (min-width: 576px) { 
+@media (min-width: 992px) { 
     #sidebar {
         min-height: 100vh;
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {  }
+
     
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {  }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) { 
+
+ }
 

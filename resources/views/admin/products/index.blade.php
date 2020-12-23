@@ -1,22 +1,19 @@
-@extends('admin.layout')
+@extends('admin.app-layout')
 
 @section('content')
 
-<div id="index">   
 
-{{-- <h1>{{dd($categories)}}</h1> --}}
-    <div class="card m-3">
         <div class="card-header">
             <span class='admin-title'>Svi Proizvodi</span>
-            <a href="/product/create" class="btn btn-primary ml-3 btn-lg">Dodaj proizvod</a>
+            <a href="/product/create" class="btn btn-secondary ml-3 ">Dodaj proizvod</a>
         </div>
         <div class="card-body row">
 
-            <div class="col-2">
+            <div class="col-xl-2 col-lg-3">
                 <aside>
                     <div class="card">
                         <div class="card-header">
-                            <h2>KATEGORIJE</h2>
+                            <h6>KATEGORIJE</h6>
                         </div>
                             <div class="card-body">
                                 <ul class="sidebar-list">
@@ -45,7 +42,7 @@
                 </aside>
             </div>
 
-            <div class="col-10">    
+            <div class="col-xl-10 col-lg-9">    
                 <table class="table">
                     <tr>
                         <th> 
@@ -87,14 +84,14 @@
                         {{-- <td>{{$product->pakovanje}}</td> --}}
                         <td>{{$product->dostupnost}}</td>
                         {{-- <td>{{ Str::words($product->opis, 3) }}</td> --}}
-                        <td><img height="60px" src="/images/products/{{$product->image}}"></td>
+                        <td><img height="60px" src="{{ asset('storage/' . $product->image) }}"></td>
                         <td>{{presentPrice($product->cena)}}</td>
                         {{-- <td>{{formatDate($product->created_at)}}</td> --}}
                         {{-- <td>{{formatDate($product->updated_at)}}</td>   --}}
                         <td>
                             <div class="controls">
                                 <a class="btn btn-success" title="otvori u novom tabu" target="_blank" href="/proizvodi/{{$product->slug}}">Prikaži</a>
-                                <a class="btn btn-primary" title="izmeni" href="/product/edit/{{$product->id}}">Izmeni</a>
+                                <a class="btn btn-secondary" title="izmeni" href="/product/edit/{{$product->id}}">Izmeni</a>
                                 <form class="d-inline" action="/product/delete/{{$product->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -102,33 +99,18 @@
                                 </form>
 
                             </div>
-                            {{-- <div class="controls">
-                                <a title="otvori u novom tabu" target="_blank" href="/proizvodi/{{$product->slug}}"><i class="fas fa-eye"></i></a>
-                                <a title="izmeni" href="/product/edit/{{$product->id}}"><i class="fas fa-edit"></i></a>
-                                <form action="/product/delete/{{$product->id}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="inline-button" title="obriši"><i class="fas fa-trash"></i></button>
-                                </form>
-
-                            </div> --}}
                         </td>
                     </tr>
                     @endforeach
                 </table>
 
-            </div>
-
+            </div>            {{-- col-10  --}}
+    
             
-            
-            
-        </div>
-
+        </div>        {{-- card-body  --}}
+        
         <div class="d-flex justify-content-center mb-3">
             {{$products->appends(request()->input())->links()}}
         </div>
-
-    </div>
-</div>
 
 @endsection

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\ProductValidateRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductsController extends Controller
@@ -46,7 +49,9 @@ class ProductsController extends Controller
     {
         $categories = Category::where('parent_id', 0)->get();
 
-        return view('admin.products.create', compact('categories'));
+        $actions = Action::where('active', 1)->get();
+
+        return view('admin.products.create', compact('categories', 'actions'));
     }
 
     /**
@@ -55,13 +60,15 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductValidateRequest $request)
+    public function store(StoreProductRequest $request)
     {           
         // Check if image is uploaded
         if ($request->hasFile('image')) {
-          $imageName = $this->uploadImage($request->file('image'));
+            // Create name based on unique slug and save at default storage location
+            $name = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('images/products', $name);
         } else {
-            $imageName = '';  
+            $path = '';  
         }
 
         Product::create([
@@ -70,16 +77,18 @@ class ProductsController extends Controller
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'proizvodjac' => $request->proizvodjac,
-            'akcija' => $request->akcija,
+            'cena' => $request->cena * 100,
+            'popust' => $request->popust,
+            'action_id' => $request->action_id == '' ? null : $request->action_id,
             'pakovanje' => $request->pakovanje,
             'dostupnost' => $request->dostupnost,
             // Price in DB saved in cents
-            'cena' => $request->cena * 100,
             'opis' => $request->opis,
-            'image' => $imageName,
+            // Image is formated as relative path to storage + filename + ext
+            'image' => $path,
         ]);  
         
-        return redirect()->route('products'); 
+        return redirect()->route('products')->with('success', 'Proizvod je uspešno kreiran'); 
     }
 
     /**
@@ -103,7 +112,9 @@ class ProductsController extends Controller
     {        
         $subcategories = Category::where('parent_id', $product->category_id)->get();
 
-        return view('admin.products.edit', compact('product', 'subcategories'));
+        $actions = Action::where('active', 1)->get();
+
+        return view('admin.products.edit', compact('product', 'subcategories', 'actions'));
     }
 
     /**
@@ -113,17 +124,20 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         // Check if image is uploaded
         if ($request->hasFile('image')) {
+           
             // Delete old image
-            $this->deleteImage($product->image);
-            // Upload new image and save name to DB 
-            $imageName = $this->uploadImage($request->file('image'));
-            $product->image = $imageName;
-            $product->save();            
-        } 
+            Storage::exists($request->image) ? Storage::delete($request->image) : '';
+
+            // Create name based on unique slug and save at default storage location
+            $name = $request->slug . '.' . $request->file('image')->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('images/products', $name);
+        } else {
+            $path = '';  
+        }
 
         $product->update([
             'ime' => $request->ime,
@@ -131,15 +145,18 @@ class ProductsController extends Controller
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'proizvodjac' => $request->proizvodjac,
-            'akcija' => $request->akcija,
+            'action_id' => $request->action_id,
+            'popust' => $request->popust,
             'pakovanje' => $request->pakovanje,
             'dostupnost' => $request->dostupnost,
             // Price in DB saved in cents
             'cena' => $request->cena * 100,
             'opis' => $request->opis,
+            // Image is formated as relative path to storage + filename + ext
+            'image' => $path
         ]);
 
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success', 'Proizvod je uspešno izmenjen');
     }
 
     /**
@@ -151,10 +168,11 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         // Delete image
-        $this->deleteImage($product->image);
+        Storage::exists($product->image) ? Storage::delete($product->image) : '';
+
         $product->delete();
 
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success', 'Proizvod je uspešno obrisan');
     }
 
     /**
@@ -180,6 +198,12 @@ class ProductsController extends Controller
         $slug = SlugService::createSlug(Product::class, 'slug', $request->name);
 
         return response()->json(['slug' => $slug]);
+    }
+
+    // Return discount for selected action
+    public function discount(Action $action)
+    {
+        return response()->json(['discount' => $action->discount]);
     }
 
     // Upload single file and return filename

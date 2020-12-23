@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\ActionsController;
-use App\Http\Controllers\CartController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\OrderController;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\ActionsController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SubcategoriesController;
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +35,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('pocetna');
 Route::get('/prodavnica/{category_slug}/{subcategory_slug?}', [ShopController::class, 'index']);
 Route::get('/pretraga', [ShopController::class, 'search']);
 Route::get('/proizvodi/{product_slug}', [ShopController::class, 'show']);
-Route::get('action/{slug}', [ShopController::class, 'action']);
+Route::get('akcije/{slug}', [ShopController::class, 'action']);
 
 
 
@@ -46,18 +49,33 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /**
  * Cart Routes
  */
+Route::get('/checkout', [CheckoutController::class, 'index']);
+
 Route::resource('/cart', CartController::class);
+
+// Cart Content Ajax Request
+Route::get('/cartContent', [CartController::class, 'cartContent']);
+
+
+Route::get('/cartshow', function() {
+    dd(Cart::content());    
+});
 
 Route::get('/cartDelete', function() {
     Cart::destroy();
 });
 Route::get('/cart/remove/{rowId}', [CartController::class, 'remove']);
+
+Route::get('/cart/decrementQty/{rowId}', [CartController::class, 'decrementQty']);
+Route::get('/cart/incrementQty/{rowId}', [CartController::class, 'incrementQty']);
+
 Route::post('cart/quantity', [CartController::class, 'quantityChange']);
 
 /**
- * Order
+ * Order / Checkout
  */
-Route::post('/order', [OrderController::class, 'store']);
+Route::post('/order', [CheckoutController::class, 'store']);
+Route::view('/thankyou', 'thankyou');
 
 
 /**
@@ -65,7 +83,7 @@ Route::post('/order', [OrderController::class, 'store']);
  * Admin Area Routes
  * 
  */
-Route::view('/admin', 'admin.admin');
+Route::get('/admin', [DashboardController::class, 'index']);
 
 // Product CRUD
 Route::get('/products/{category_id?}/{subcategory_id?}', [ProductsController::class, 'index'])->name('products');
@@ -78,6 +96,7 @@ Route::delete('/product/delete/{product}', [ProductsController::class, 'destroy'
 // Ajax Requests
 Route::get('/product/fetchSubcategories/{category_id}', [ProductsController::class, 'fetchSubcategories']);
 Route::post('/product/createSlug', [ProductsController::class, 'createSlug']);
+Route::get('/product/discount/{action}', [ProductsController::class, 'discount']);
 
 
 

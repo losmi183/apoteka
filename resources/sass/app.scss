@@ -23,6 +23,7 @@
 
 // elements
 @import 'elements/cart';
+@import 'elements/input';
 
 // Boxes
 @import 'boxes/box-simple';
@@ -35,7 +36,6 @@
 @import 'partials/footer';
 
 // Components
-@import 'components/dropdown';
 @import 'components/image-zoom';
 @import 'components/login-dropdown';
 @import 'components/product-added';
@@ -47,6 +47,10 @@
 
 // Mobile Devices
 @import 'mobile';
+
+// Pages
+@import 'pages/cart';
+@import 'pages/checkout';
 
 
 // Admin

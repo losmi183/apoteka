@@ -17,7 +17,7 @@
   
                 @foreach ($actions as $action)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }} skyblue">
-                        <a href="/action/{{$action->slug}}">
+                        <a href="/akcije/{{$action->slug}}">
                             {{-- storage is default folder for storing files / image is path+filename   --}}
                             <img src="{{ asset('storage/' . $action->image) }}">               
                         </a>
@@ -49,12 +49,14 @@
             <div class="row">
                 @foreach ($randomCategories as $category)
                     <div class="col-md-4">
-                        <div class="box-simple" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="800">
-                            <div class="box-simple-image">
-                                <img src="images/category/2.jpg" alt="" class="img-fluid">
+                        <a href="/prodavnica/{{$category->slug}}">
+                            <div class="box-simple" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="800">
+                                <div class="box-simple-image">
+                                    <img src="images/category/2.jpg" alt="" class="img-fluid">
+                                </div>
+                                <h3>{{$category->name}}</h3>
                             </div>
-                            <h3>{{$category->name}}</h3>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -78,18 +80,35 @@
                 
                 @foreach ($randomProducts as $product)                    
                     <div class="product">
-                        <div class="product-image"><img src="/images/products/{{$product->image}}" alt=""></div>
+                        <div class="product-image">
+                            <a href="/proizvodi/{{$product->slug}}">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="">
+                            </a>
+                            @if ($product->znacka)
+                                <div class="add-on">{{$product->znacka}}</div>
+                            @endif
+                        </div>
                         <div class="product-text">
-                            <a class="product-title">{{$product->ime}}</a>
+                            <a href="/proizvodi/{{$product->slug}}" class="product-title">{{$product->ime}}</a>
                             <div class="product-info">
                                 <span class="product-price"><strong>{{presentPrice($product->cena)}}</strong>KM</span>
         
                                 <div class="product-order">
-                                    <form method='GET'>
+                                    <form class="add-to-cart-form" action="/cart" method="POST">
+                                        @csrf
                                         <div class="input-group">
+
+                                            <input name="id" type="hidden" value="{{ $product->id }}">
+                                            <input name="name" type="hidden" value="{{ $product->ime }}">
+                                            <input name="slug" type="hidden" value="{{ $product->slug }}">
                                             <input name="qty" type="number" class="form-control" value="1">
+                                            <input name="price" type="hidden" value="{{ $product->cena }}">
+                                            <input name="image" type="hidden" value="{{ $product->image }}">
+
                                             <div class="input-group-append">
-                                                <button title="Dodaj u korpu" type="submit" class="btn btn-primary add-to-cart-button" type="button"><i class="fas fa-cart-plus"></i></button>
+                                                <button title="Dodaj u korpu" class="btn btn-primary add-to-cart-button">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
@@ -165,20 +184,34 @@
                 @foreach ($randomProductsAtAction as $product)
                     <div class="product">
                         <div class="product-image">
-                            <img src="images/products/{{$product->image}}" alt="">
-                            <div class="add-on">Akcija</div>
+                            <a href="/proizvodi/{{$product->slug}}">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="">
+                            </a>
+                            @if ($product->znacka)
+                                <div class="add-on">{{$product->znacka}}</div>
+                            @endif
                         </div>
                         <div class="product-text">
-                            <a class="product-title">{{$product->ime}}</a>
+                            <a href="/proizvodi/{{$product->slug}}" class="product-title">{{$product->ime}}</a>
                             <div class="product-info">
                                 <span class="product-price"><strong>{{presentPrice($product->cena)}}</strong>KM</span>
     
                                 <div class="product-order">
-                                    <form method='GET'>
+                                    <form class="add-to-cart-form" action="/cart" method="POST">
+                                        @csrf
                                         <div class="input-group">
+
+                                            <input name="id" type="hidden" value="{{ $product->id }}">
+                                            <input name="name" type="hidden" value="{{ $product->ime }}">
+                                            <input name="slug" type="hidden" value="{{ $product->slug }}">
                                             <input name="qty" type="number" class="form-control" value="1">
+                                            <input name="price" type="hidden" value="{{ $product->cena }}">
+                                            <input name="image" type="hidden" value="{{ $product->image }}">
+
                                             <div class="input-group-append">
-                                                <button title="Dodaj u korpu" type="submit" class="btn btn-primary add-to-cart-button" type="button"><i class="fas fa-cart-plus"></i></button>
+                                                <button title="Dodaj u korpu" class="btn btn-primary add-to-cart-button">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

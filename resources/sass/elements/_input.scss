@@ -1,0 +1,32 @@
+// Bootstrap input group override
+
+.custom-input-group {
+    margin: 0;
+
+    width: 120px;
+
+    input {
+        text-align: center;
+        &:focus {
+            box-shadow: none !important;
+        }
+    }
+
+    .input-group-prepend, .input-group-append {
+        background-color: white !important;
+        
+        &:hover {
+            background-color: lighten($primary-color, 20%);
+            color: white;
+        }
+    }
+}
+
+.btn-input {
+    border: 1px solid #ccc;
+
+    &:hover {
+        background: $secondary-color;
+        color: white;
+    }
+}

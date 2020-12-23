@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductValidateRequest extends FormRequest
+class StoreProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,8 +32,9 @@ class ProductValidateRequest extends FormRequest
             'pakovanje' => 'required|max:255',
             'dostupnost' => 'required|max:255',
             'cena' => 'required|max:255',
+            'popust' => 'min:0|max:99',
             'opis' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5200',
         ];
-    }   
+    }
 }

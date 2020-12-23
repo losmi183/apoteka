@@ -14,9 +14,10 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       
+        $randomProducts = Product::haveCatAndSubcats()->inRandomOrder()->take(8)->get();
         // dd(Cart::content());
-        return view('cart');
+        return view('cart', compact('randomProducts'));
     }
 
     /**
@@ -38,12 +39,15 @@ class CartController extends Controller
     public function store(Request $request)
     {
         Cart::add([
-            'id' => $request->id, 
-            'name' => $request->name, 
-            'qty' => $request->qty, 
-            'price' => $request->price, 
-            'weight' => 550,
-            'options' => ['image' => $request->image]
+            'id' => $request->id,
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => $request->price,
+            'weight' => 1,
+            'options' => [
+                'slug' => $request->slug,
+                'image' => $request->image
+            ]
         ]);
 
         return back()->with('success', 'Proizvod je dodat u korpu');
@@ -108,9 +112,9 @@ class CartController extends Controller
      */
     public function remove($rowId)
     {
-        Cart::remove($rowId);
+        Cart::remove($rowId);        
 
-        return back()->with('success', 'Proizvod je uklonjen iz korpe');
+        return back()->with('success', 'Proizvod je uklonjen iz korpe');        
     }
      /**
      * Change quantity for specified row
@@ -123,5 +127,41 @@ class CartController extends Controller
         Cart::update($request->rowId, $request->quantity); 
 
         return back()->with('success', 'Promenjena je količina');
+    }
+
+
+    public function decrementQty($rowId)
+    {
+        // Whole cart content
+        $cart = Cart::content();
+
+        // Filter by rowId 
+        $item = $cart->filter(function($cart) use($rowId) {
+            return $cart->rowId == $rowId;
+        })->first();
+
+        // // Check if item is lower then 1, then remove item
+        if($item->qty > 1) {
+            $qty = $item->qty - 1;        
+            Cart::update($rowId, $qty); 
+        }
+        return back();
+    }
+    public function incrementQty($rowId)
+    {
+        // Whole cart content
+        $cart = Cart::content();
+
+        // Filter by rowId 
+        $item = $cart->filter(function($cart) use($rowId) {
+            return $cart->rowId == $rowId;
+        })->first();
+
+        // // Check if item is lower then 1, then remove item
+        if($item->qty < 100) {
+            $qty = $item->qty + 1;        
+            Cart::update($rowId, $qty); 
+        }
+        return back();
     }
 }

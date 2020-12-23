@@ -18,11 +18,12 @@ class CreateOrdersTable extends Migration
             $table->integer('suma');
             $table->unsignedInteger('status')->default(1);
             $table->string('ime');
-            $table->string('prezime');
+            $table->string('prezime')->nullable();
             $table->string('email')->nullable();
             $table->string('telefon');
             $table->string('adresa');
             $table->string('grad');
+            $table->text('napomene');
             $table->timestamps();
         });
     }

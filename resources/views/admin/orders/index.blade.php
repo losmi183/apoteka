@@ -1,21 +1,18 @@
-@extends('admin.layout')
+@extends('admin.app-layout')
 
 @section('content')
 
-<div id="order-index">   
 
-{{-- <h1>{{dd($categories)}}</h1> --}}
-    <div class="card m-3">
         <div class="card-header">
             <span class='admin-title'>Porudzbine</span>
         </div>
 
         <div class="card-body row">    
-            <div class="col-sm-2">
+            <div class="col-xl-3" >
                 <aside>
                     <div class="card">
                         <div class="card-header">
-                            <h2>STATUS</h2>
+                            <h6>STATUS</h6>
                         </div>
                             <div class="card-body">
                                 <ul class="sidebar-list">
@@ -28,7 +25,8 @@
                     </div> 
                 </aside>
             </div>
-            <div class="col-sm-10">    
+
+            <div class="col-xl-9">    
                 <table class="table">
                     <tr>
                         <th>#</th>
@@ -65,14 +63,15 @@
                     </tr>
                     @endforeach
                 </table>
-            </div>                    
-        </div>
+            </div>        {{-- col-sm-10  --}}
 
-        <div class="d-flex justify-content-center mb-3">
-            {{$orders->appends(request()->input())->links()}}
-        </div>
+            <div class="d-flex justify-content-center mb-3">
+                {{$orders->appends(request()->input())->links()}}
+            </div>
 
-    </div>
-</div>
+        </div>         {{-- Card body  --}}
+
+
+
 
 @endsection

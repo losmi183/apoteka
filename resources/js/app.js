@@ -22,7 +22,7 @@ require('./frontend/slideshow.js');
 require('./frontend/navbar-fixed.js');
 require('./frontend/slick.js');
 require('./frontend/slick-custom.js');
-require('./frontend/product-added.js');
+require('./frontend/product-add-to-cart.js');
 require('./frontend/image-zoom.js');
 
 // window.Vue = require('vue');

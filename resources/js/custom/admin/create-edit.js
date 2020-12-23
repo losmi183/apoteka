@@ -37,4 +37,25 @@ $(document).ready(function() {
             $('#slug').val(response.data.slug);
         });
     });
+
+    /**
+     * 
+     * On Select action, set discount field
+     * 
+     */
+    var actions = document.getElementById('actions');
+    actions.addEventListener('change', function() {
+        // Taking value of select
+        var action_id = this.value;
+        // console.log(action_id);
+        
+        Axios.get('/product/discount/' + action_id)
+        .then(function(response) {
+            
+            console.log(response.data.discount);
+            document.getElementById('discount').value = response.data.discount;
+        })
+    })
+
+
 });

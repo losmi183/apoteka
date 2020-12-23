@@ -91,17 +91,16 @@ class ShopController extends Controller
         // Find Product based on slug
         $product = Product::where('slug', $product_slug)->first();
 
-        $categoryName = Category::find($product->category_id)->name;
+        $category = Category::find($product->category_id);
+        $subcategory = Category::find($product->subcategory_id);
 
-        $images = Images::where('product_id', $product->id)->get();
-
-        $randomProducts = Product::where('id', '!=', $product->id)
+        $randomProductsAtAction = Product::where('id', '!=', $product->id)
             ->where('category_id', '!=', 'null')
             ->where('subcategory_id', '!=', 'null')
             ->inRandomOrder()
             ->take(4)->get();
         
-        return view('product', compact('product', 'randomProducts', 'categoryName', 'images'));
+        return view('product', compact('product', 'randomProductsAtAction', 'category', 'subcategory'));
     }
 
     /**

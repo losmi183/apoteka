@@ -1,4 +1,7 @@
 .sidebar {
+    span {
+        color: #333;
+    }
     border: 1px solid #ccc;
 
     .sidebar-header {
@@ -12,19 +15,20 @@
     .sidebar-item {
         display: flex;
         justify-content: space-between;
-        margin: 3px 0;
-        padding: 0 3px;
-        span {
-            color: $dark-color;
-        }
+        // margin: 3px 0;
+        padding: 3px;
+
         &:hover {
             text-decoration: none;
             color: white;
-            background: lighten($primary-color, 30%);
+            background: #ddd;
         }
     }
     .sidebar-item.active {
         text-decoration: none;
-        background: lighten($primary-color, 15%);
+        background: $secondary-color;
+        span {
+            color: white !important;
+        }
     }
 }

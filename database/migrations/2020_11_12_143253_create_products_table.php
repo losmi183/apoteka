@@ -30,10 +30,10 @@ class CreateProductsTable extends Migration
             $table->string('proizvodjac');
             $table->string('pakovanje')->nullable();
             $table->boolean('dostupnost')->default(true);
-
+            $table->string('znacka')->nullable();
             $table->integer('cena');
 
-            $table->unsignedBigInteger('action_id')->nullable();            
+            $table->unsignedBigInteger('action_id')->nullable();           
             $table->foreign('action_id')->references('id')
                   ->on('actions')->onUpdate('cascade')->onDelete('set null');
 

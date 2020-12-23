@@ -57,6 +57,10 @@
         background: darken($primary-color, 20%);
         color: white;        
     }
+    &:disabled {
+        background: $primary-color;
+        color: white;      
+    }
 }
 .btn-outline-danger {
     color: $primary-color;
@@ -81,8 +85,8 @@
     }
 }
 .btn-secondary {
-    background: $secondary-color;
-    border-color: $secondary-color;
+    background: $secondary-color !important;
+    border-color: $secondary-color !important;
     &:hover {
         background: darken($secondary-color, 20%);      
     }

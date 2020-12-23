@@ -16,84 +16,100 @@ class ProductsTableSeeder extends Seeder
     {
         $price = [1611, 905, 2122, 1411, 4585, 2155, 1998, 526, 348, 758, 902];
 
+        $x = 0;
         for ($i=1; $i <= 10; $i++) { 
             Product::create([
                 'id' => $i,
                 'slug' => 'proizvod-imunitet-'.$i,
                 'category_id' => 1,
-                'subcategory_id' => 6,
+                'subcategory_id' => 6 + $x++,
                 'ime' => 'Proizvod Imunitet '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',
                 'action_id' => '1',
                 'cena' => 2500,
                 'popust' => 1999,
+                'znacka' => $x == 3  ? 'akcija' : '',
                 'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
-                'image' => $i.'.jpg '
+                'image' => 'images/products/' . $i.'.jpg '
             ]);
+            // Reset x after 3 cycles
+            $x / 3 == 1 ? $x = 0 : '';
         }
+        $x = 0;
         for ($i=11; $i <= 20; $i++) { 
             Product::create([
                 'id' => $i,
                 'slug' => 'proizvod-za-bebe-'.$i,
                 'category_id' => 2,                
-                'subcategory_id' => 7,
+                'subcategory_id' => 9 + $x++,
                 'ime' => 'Proizvod za Bebe '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',
                 'action_id' => '2',
                 'cena' => 1849,
                 'popust' => 1499,
+                'znacka' => $x == 3  ? 'akcija' : '',
                 'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
-                'image' => $i.'.jpg '
+                'image' => 'images/products/' . $i.'.jpg '
             ]);
+            // Reset x after 3 cycles
+            $x / 3 == 1 ? $x = 0 : '';
         }
+        $x = 0;
         for ($i=21; $i <= 30; $i++) { 
             Product::create([
                 'id' => $i,
                 'slug' => 'proizvod-za-mrsavljenje-'.$i,
                 'category_id' => 3,
-                'subcategory_id' => 8,
+                'subcategory_id' => 12 + $x++,
                 'ime' => 'Proizvod za Mršavljenje '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',                
                 'action_id' => '3',
                 'cena' => 1500,
-                'popust' => 999,
-                'cena' => $price[array_rand($price)],
+                'popust' => $i / 4 == 1 ? 999 : null,
+                'znacka' => $x == 3  ? 'novo' : '',
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
-                'image' => $i.'.jpg '
+                'image' => 'images/products/' . $i.'.jpg '
             ]);
+            // Reset x after 3 cycles
+            $x / 3 == 1 ? $x = 0 : '';
         }
+        $x = 0;
         for ($i=31; $i <= 40; $i++) { 
             Product::create([
                 'id' => $i,
                 'slug' => 'proizvod-kozmetika-'.$i,
                 'category_id' => 4,
-                'subcategory_id' => 9,
+                'subcategory_id' => 15 + $x++,
                 'ime' => 'Proizvod Kozmetika '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',
                 'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
-                'image' => $i.'.jpg '
+                'image' => 'images/products/' . $i.'.jpg '
             ]);
+            // Reset x after 3 cycles
+            $x / 3 == 1 ? $x = 0 : '';
         }
         for ($i=41; $i <= 50; $i++) { 
             Product::create([
                 'id' => $i,            
                 'slug' => 'proizvod-potencija-'.$i,    
                 'category_id' => 5,
-                'subcategory_id' => 10,
+                'subcategory_id' => 18 + $x++,
                 'ime' => 'Proizvod Potencija '.$i,
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',
                 'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
-                'image' => $i.'.jpg '
+                'image' => 'images/products/' . $i.'.jpg '
             ]);
+            // Reset x after 3 cycles
+            $x / 3 == 1 ? $x = 0 : '';
         }
     }
 }

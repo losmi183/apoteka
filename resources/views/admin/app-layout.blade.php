@@ -14,7 +14,8 @@
   
   {{-- Fontawsome Icons with my KIT CODE  --}}
   <script src="https://kit.fontawesome.com/7532718861.js"></script>
-
+  
+  <link rel="icon" href="{!! asset('/images/logo.png') !!}"/>
   <title>Admin | Dashboard</title>
 
   <!-- Bootstrap core CSS -->

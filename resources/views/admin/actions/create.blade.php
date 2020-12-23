@@ -5,6 +5,7 @@
 <div class="card-header">
     <span class='admin-title mr-3'>Kreiraj Akciju</span>            
 </div>
+
 <div class="card-body">   
 
     <form method="POST" action="{{route('actions.store')}}" enctype="multipart/form-data">

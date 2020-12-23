@@ -16,7 +16,6 @@
 
                 <!-- Login Dropdown component  -->
                 <div class="login-component">
-
                     <a id="login-dropdown" class=" mr-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user" aria-hidden="true"></i><span class="mobile-hide">Moj nalog</span>
                     </a>  
@@ -45,49 +44,15 @@
                 
                 <!-- Cart Dropdown Component  -->
                 <div class="cart-component">
-                    <a id="cart-dropdown" class="" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="/cart">
                         <span class="shoping-cart">
                             <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                            <small>2</small>
+                            @if (Cart::count())
+                                <small id="cart-counter">{{ Cart::count() }}</small>
+                            @endif
                             <span class="mobile-hide">Korpa</span>
                         </span>
-                    </a>
-                    <div id="cart-preview" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <div id="close-cart" class="d-flex justify-content-end"><i class="fas fa-window-close"></i></div>
-                             <hr>
-                            <div class="item">
-                                <img height="64px" src="images/products/1.jpg" alt="">
-                                <div class="item-info">
-                                    <h5>Ulje crnog kumina</h5>
-                                    <span>2 X <strong>14.95 KM</strong></span>
-                                </div>
-                                <i class="fas fa-window-close"></i>
-                            </div> <hr>
-                            <div class="item">
-                                <img height="64px" src="images/products/2.jpg" alt="">
-                                <div class="item-info">
-                                    <h5>Ulje crnog kumina</h5>
-                                    <span>2 X <strong>14.95 KM</strong></span>
-                                </div>
-                                <i class="fas fa-window-close"></i>
-                            </div> <hr>
-                            <div class="item">
-                                <img height="64px" src="images/products/3.jpg" alt="">
-                                <div class="item-info">
-                                    <h5>Čaj za upalu mokraćnih kanala</h5>
-                                    <span>2 X <strong>14.95 KM</strong></span>
-                                </div>
-                                <i class="fas fa-window-close"></i>
-                            </div> <hr>
-                            <div class="cart-sum">
-                                <h3>Ukupno</h3 >
-                                <strong>49.99 KM</strong>
-                            </div>
-                            <div class="cart-buttons">
-                                <a href="?korpa" class="btn btn-primary btn-sm btn-block">Korpa</a>
-                                <a href="#" class="btn btn-secondary btn-sm  btn-block">Plaćanje</a>
-                            </div>
-                    </div> <!-- End of Cart preview  -->
+                    </a>                    
                 </div><!-- End of Cart Dropdown Component  -->         
 
 
@@ -99,7 +64,7 @@
     <div class="middle-header">
         <div class="container" >
             <div class="row no-gutters">
-    
+                
                 <div class="col-md-4 col-8 d-flex align-items-right">
                     <div class="logo-wrapper" >
                         <div data-aos="zoom-in-down" data-aos-duration="1000">

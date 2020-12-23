@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Action;
-use App\Models\Product;
-use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Requests\CheckoutStoreRequest;
 
-class HomepageController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,17 +16,12 @@ class HomepageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // Fetch 4 Actions / LASTEST FIRST
-        $actions = Action::where('active', true)->orderBy('updated_at', 'DESC')->take(4)->get();
+    {        
+        if(Cart::count() == 0) {
+            return back()->with('error', 'Korpa je prazna');
+        }
 
-        $randomProducts = Product::haveCatAndSubcats()->inRandomOrder()->take(8)->get();
-
-        $randomProductsAtAction = Product::haveCatAndSubcats()->where('znacka', 'akcija')->inRandomOrder()->take(12)->get();
-        
-        $randomCategories = Category::where('parent_id', 0)->inRandomOrder()->take(3)->get();
-
-        return view('home', compact('actions', 'randomProducts', 'randomCategories', 'randomProductsAtAction'));
+        return view('checkout');
     }
 
     /**
@@ -44,9 +40,38 @@ class HomepageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CheckoutStoreRequest $request)
     {
-        //
+        // return $request->all();
+        if(Cart::count() == 0) {
+            return redirect()->route('pocetna');
+        }
+
+        // Create Order
+        $order = Order::create([
+            'ime' => $request->ime,
+            // 'prezime' => $request->prezime,
+            'email' => $request->email,
+            'adresa' => $request->adresa,
+            'telefon' => $request->telefon,
+            'grad' => $request->grad,
+            'napomene' => $request->napomene,
+            'suma' => Cart::subtotal()
+        ]);
+
+        // ProductOrder
+        foreach(Cart::content() as $item) {
+            OrderProduct::create([
+                'product_id' => $item->id,
+                'order_id' => $order->id,
+                'quantity' => $item->qty
+            ]);
+        }
+
+        // Destroying Cart after ordering
+        Cart::destroy();
+
+        return view('thankyou');
     }
 
     /**
