@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,10 +31,12 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         // Share categories to all views
-        $categories = Category::where('parent_id', 0)->get();
-        View::share([
-            'categories' => $categories,
-        ]);
+        if(Schema::hasTable('categories')) {
+            $categories = Category::where('parent_id', 0)->get();
+            View::share([
+                'categories' => $categories,
+            ]);
+        }
 
     }
 }
