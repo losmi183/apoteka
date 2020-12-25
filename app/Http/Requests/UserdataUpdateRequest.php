@@ -29,7 +29,7 @@ class UserdataUpdateRequest extends FormRequest
             'email' => [
                 'required',
                 'max:255',
-                Rule::unique('users')->ignore(1)
+                Rule::unique('users')->ignore($this->id)
             ],
             'address' => 'required|max:255',
             'phone' => 'required|max:255',

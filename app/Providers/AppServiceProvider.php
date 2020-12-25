@@ -30,13 +30,11 @@ class AppServiceProvider extends ServiceProvider
         // Use Bootstrap for Pagination
         Paginator::useBootstrap();
 
-        // Share categories to all views
-        if(Schema::hasTable('categories')) {
-            $categories = Category::where('parent_id', 0)->get();
-            View::share([
-                'categories' => $categories,
-            ]);
-        }
+        // Share categories to all views   
+        $categories = Category::where('parent_id', 0)->get();
+        View::share([
+            'categories' => $categories,
+        ]);      
 
     }
 }
