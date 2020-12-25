@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ActionsController extends Controller
 {
+    // Allow access for publishers and admins
+    public function __construct()
+    {
+        $this->middleware('publisher');
+    }
     /**
      * Display a listing of the resource.
      *

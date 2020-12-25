@@ -13,7 +13,7 @@ header {
 
         i {
             font-size: 20px;
-            margin: 6px;
+            margin: 0 0 0 10px;
             background: lighten($primary-color, 15%) ;
             padding: 8px;
             border-radius: 30px;
@@ -23,7 +23,6 @@ header {
             // color: $primary-color;
             font-size: 18px;
             font-weight: 600;
-            margin-right: 8px;
         }
         .shoping-cart {
             position: relative;
@@ -43,6 +42,10 @@ header {
                 align-items: center;
                 font-size: 12px;
             }
+        }
+        .dropdown-item:hover {
+            background: $primary-color;
+            color: white;
         }
     }
 
@@ -78,7 +81,7 @@ header {
         align-items: center;
         i {
             font-size: 20px;
-            margin: 6px;
+            margin: 0 0 0 10px;
             background: chartreuse;
             padding: 8px;
             border-radius: 30px;

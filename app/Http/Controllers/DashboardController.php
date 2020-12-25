@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    // Allow access for publishers and admins
+    public function __construct()
+    {
+        $this->middleware('publisher');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +20,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $products = DB::table('products')->count();
+        $categories = DB::table('categories')->count();
+        $actions = DB::table('actions')->count();
+        $orders = DB::table('orders')->count();
+        $users = DB::table('users')->count();
         
-        return view('admin.dashboard');
+        return view('admin.dashboard', compact('products', 'categories', 'actions', 'orders', 'users'));
     }
 
     /**

@@ -5,13 +5,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UsersController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\ActionsController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UserdataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UserordersController;
 use App\Http\Controllers\SubcategoriesController;
 
 /*
@@ -37,13 +41,29 @@ Route::get('/pretraga', [ShopController::class, 'search']);
 Route::get('/proizvodi/{product_slug}', [ShopController::class, 'show']);
 Route::get('akcije/{slug}', [ShopController::class, 'action']);
 
+/**
+ * Pages
+ */
+Route::get('/pitanja', [PagesController::class, 'questions']);
+Route::get('/isporuka', [PagesController::class, 'delivery']);
+Route::get('/placanje', [PagesController::class, 'payment']);
+
 
 
 /**
  * Auth Routes
  */
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomepageController::class, 'index'])->name('home');
+
+/**
+ * User Routes
+ * 
+ */
+Route::get('/moj-profil', [UserdataController::class, 'index']);
+Route::patch('/moj-profil/{user}', [UserdataController::class, 'update']);
+Route::get('/moje-porudzbine', [UserordersController::class, 'index']);
+Route::post('/changePassword', [UserdataController::class, 'changePassword']);
 
 
 /**
@@ -121,3 +141,9 @@ Route::post('/order/status/{order}', [OrderController::class, 'statusChange']);
 
 // Actions Routes
 Route::resource('actions', ActionsController::class);
+
+
+// Users Admin routes
+Route::get('/admin/users/{role?}', [UsersController::class, 'index']); 
+// Ajax change role
+Route::post('/admin/users/changeRole', [UsersController::class, 'changeRole']); 

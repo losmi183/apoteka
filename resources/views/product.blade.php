@@ -63,10 +63,22 @@
             
                                 <hr>
             
-                                <div class="price mb-4">
-                                    <p class="mb-2">Cijena sa PDV-om</p>
-                                    <h2 class="secondary-color">{{ presentPrice($product->cena) }} KM</h2>
+                                <div class="price mb-2">
+                                    <p class="mb-2">Cijena sa PDV-om</p>   
                                 </div>     
+
+
+                                                                                                        
+                                <div class="price-display mb-4">
+                                    {{-- Ako postoji popust  --}}
+                                    @if ($product->popust)
+                                        <small class="product-price-false mr-1">{{ presentPrice($product->cena) }}</small>
+                                        <span class="product-price"><strong>{{ presentPrice($product->popust) }}</strong>KM</span>
+                                        
+                                    @else 
+                                        <span class="product-price"><strong>{{ presentPrice($product->cena) }}</strong>KM</span>
+                                    @endif  
+                                </div>
             
                                 <div class="cart-buttons">
                                     
@@ -86,7 +98,8 @@
                                         <input name="id" type="hidden" value="{{ $product->id }}">
                                         <input name="name" type="hidden" value="{{ $product->ime }}">
                                         <input name="slug" type="hidden" value="{{ $product->slug }}">
-                                        <input name="price" type="hidden" value="{{ $product->cena }}">
+                                        <input name="price" type="hidden" value="{{ $product->cena }}">                                        
+                                        <input name="discount" type="hidden" value="{{ $product->popust }}">
                                         <input name="image" type="hidden" value="{{ $product->image }}">
 
                                         <button class="btn btn-primary">
@@ -118,7 +131,7 @@
     <section id="productOnAction">
         <div class="container">
             <div class="d-sm-flex justify-content-sm-between align-items-center">
-                <h3 class="title-primary">Preporučujemo</h3>
+                <h3 class="title-primary">Akcije</h3>
                 <div class="slick-controls">
                     <a class="prev2"><i class="fas fa-angle-left"></i></a>
                     <a class="next2"><i class="fas fa-angle-right"></i></a>
@@ -139,14 +152,35 @@
                         <div class="product-text">
                             <a href="/proizvodi/{{$product->slug}}" class="product-title">{{$product->ime}}</a>
                             <div class="product-info">
-                                <span class="product-price"><strong>{{presentPrice($product->cena)}}</strong>KM</span>
+                                
+                                <div class="product-price">
+                                    {{-- Ako postoji popust  --}}
+                                    @if ($product->popust)
+                                        <small class="product-price-false mr-1">{{ presentPrice($product->cena) }}</small>
+                                        <span class="product-price"><strong>{{ presentPrice($product->popust) }}</strong>KM</span>
+                                        
+                                    @else 
+                                        <span class="product-price"><strong>{{ presentPrice($product->cena) }}</strong>KM</span>
+                                    @endif  
+                                </div>
     
                                 <div class="product-order">
-                                    <form method='GET'>
+                                    <form class="add-to-cart-form" action="/cart" method="POST">
+                                        @csrf
                                         <div class="input-group">
+
+                                            <input name="id" type="hidden" value="{{ $product->id }}">
+                                            <input name="name" type="hidden" value="{{ $product->ime }}">
+                                            <input name="slug" type="hidden" value="{{ $product->slug }}">
                                             <input name="qty" type="number" class="form-control" value="1">
+                                            <input name="price" type="hidden" value="{{ $product->cena }}">
+                                            <input name="discount" type="hidden" value="{{ $product->popust }}">
+                                            <input name="image" type="hidden" value="{{ $product->image }}">
+
                                             <div class="input-group-append">
-                                                <button title="Dodaj u korpu" type="submit" class="btn btn-primary add-to-cart-button" type="button"><i class="fas fa-cart-plus"></i></button>
+                                                <button title="Dodaj u korpu" class="btn btn-primary add-to-cart-button">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

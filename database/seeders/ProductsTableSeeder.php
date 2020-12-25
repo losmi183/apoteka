@@ -27,8 +27,6 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',
                 'action_id' => '1',
-                'cena' => 2500,
-                'popust' => 1999,
                 'znacka' => $x == 3  ? 'akcija' : '',
                 'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
@@ -39,7 +37,7 @@ class ProductsTableSeeder extends Seeder
         }
         $x = 0;
         for ($i=11; $i <= 20; $i++) { 
-            Product::create([
+            $product = Product::create([
                 'id' => $i,
                 'slug' => 'proizvod-za-bebe-'.$i,
                 'category_id' => 2,                
@@ -48,19 +46,19 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',
                 'action_id' => '2',
-                'cena' => 1849,
-                'popust' => 1499,
                 'znacka' => $x == 3  ? 'akcija' : '',
                 'cena' => $price[array_rand($price)],
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => 'images/products/' . $i.'.jpg '
             ]);
+            $product->popust = $product->cena * 0.8;
+            $product->save();
             // Reset x after 3 cycles
             $x / 3 == 1 ? $x = 0 : '';
         }
         $x = 0;
         for ($i=21; $i <= 30; $i++) { 
-            Product::create([
+            $product = Product::create([
                 'id' => $i,
                 'slug' => 'proizvod-za-mrsavljenje-'.$i,
                 'category_id' => 3,
@@ -69,12 +67,13 @@ class ProductsTableSeeder extends Seeder
                 'proizvodjac' => 'Random Company'.$i,
                 'pakovanje' => '250 ml',                
                 'action_id' => '3',
-                'cena' => 1500,
-                'popust' => $i / 4 == 1 ? 999 : null,
+                'cena' => $price[array_rand($price)],
                 'znacka' => $x == 3  ? 'novo' : '',
                 'opis' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus voluptas iste asperiores neque exercitationem cumque dicta aliquam, eaque quibusdam vel ex porro dolore alias. Error tempora fugiat consectetur aut!',  
                 'image' => 'images/products/' . $i.'.jpg '
             ]);
+            $product->popust = $product->cena * 0.8;
+            $product->save();
             // Reset x after 3 cycles
             $x / 3 == 1 ? $x = 0 : '';
         }

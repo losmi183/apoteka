@@ -52,13 +52,13 @@
                     <td><img height="80px" src="{{ asset('storage/' . $product->image) }}"></td>
                     <td><strong>{{$product->ime}}</strong><br> 
                         <strong class="mt-1 d-block">{{$product->slug}}</strong><br> 
-                        Cijena po jedinici: {{presentPrice($product->cena)}} <br>
+                        {{-- Cijena po jedinici: {{presentPrice($product->popust ?? $product->cena)}} <br> --}}
                         {{-- Pakovanje:ml <br> --}}
                         {{-- Veličina pakovanja: 250</td> --}}
                 
                     <td>{{$product->id}}</td>
                     <td>{{$product->pivot->quantity}}</td>
-                    <td class="text-right"><strong >{{presentPrice($product->cena)}}</strong></td>
+                    <td class="text-right"><strong >{{presentPrice($product->popust ?? $product->cena)}}</strong></td>
                 <td>
                     <a target="_blanc" title="Pogledaj u prodavnici" href="/proizvodi/{{$product->slug}}"><i class="fas fa-eye"></i></a>
                     <a target="_blanc" title="Edituj" href="/product/edit/{{$product->id}}"><i class="fas fa-edit"></i></a>

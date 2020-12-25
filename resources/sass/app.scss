@@ -37,7 +37,6 @@
 
 // Components
 @import 'components/image-zoom';
-@import 'components/login-dropdown';
 @import 'components/product-added';
 @import 'components/slideshow';
 @import 'components/slick-custom';
@@ -51,6 +50,8 @@
 // Pages
 @import 'pages/cart';
 @import 'pages/checkout';
+@import 'pages/page';
+@import 'pages/single-product';
 
 
 // Admin

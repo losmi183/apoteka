@@ -37,12 +37,12 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         Cart::add([
             'id' => $request->id,
             'name' => $request->name,
             'qty' => $request->qty,
-            'price' => $request->price,
+            'price' => $request->discount ?? $request->price,
             'weight' => 1,
             'options' => [
                 'slug' => $request->slug,

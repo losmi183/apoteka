@@ -13,6 +13,7 @@ require('./custom/product.js');
 require('./custom/admin/create-edit.js');
 require('./custom/admin/admin-panel.js');
 require('./custom/admin/category.js');
+require('./custom/admin/users.js');
 require('./custom/cart.js');
 
 /**

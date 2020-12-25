@@ -1,9 +1,8 @@
 .product {
-
-    border: 2px solid white;    
-    transition: border 0.5 ease;
+    border: 2px solid #ccc;    
+    transition: all 0.3s;
     &:hover {
-        border: 2px solid lighten($secondary-color, 10%);
+        border: 2px solid lighten($primary-color, 30%);
     }
 
     .product-image {
@@ -24,10 +23,10 @@
         img {
             cursor: pointer;
             // filter: brightness(100%);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             &:hover {
                 // filter: brightness(90%);
-                transform: scale(1.05);
+                transform: scale(1.1);
             }
         }        
     }
@@ -39,7 +38,7 @@
             color: $secondary-color;
             text-transform: uppercase;
             font-size: 18px;
-            min-height: 42px;
+            min-height: 60px;
             margin-top: 10px;
         }
 
@@ -54,6 +53,12 @@
                     font-weight: 600;
                     margin-right: 3px;
                 }
+            }
+            small {
+                text-decoration: line-through;
+                color: $secondary-color;
+                font-size: 20px;
+                font-weight: 600;
             }
 
             .product-order {
@@ -84,5 +89,8 @@
         &:focus {
             background: $primary-color;
         } 
+    }
+    a {
+        text-decoration: none;
     }
 }

@@ -53,6 +53,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        // Custom auth middlewares
+        'publisher' => \App\Http\Middleware\PublisherAuth::class,
+        'admin' => \App\Http\Middleware\AdminAuth::class,
+        //default middlewares        
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

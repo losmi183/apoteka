@@ -1,8 +1,10 @@
 @extends('admin.app-layout')
 
 @section('content')
-    <div id="top_x_div" style="width: 100%; height: 80%;"></div>
-@endsection
+    <div class="py-4 px-3">
+        <div id="top_x_div" style="width: 100%; height: 80%;"></div>
+    </div>
+    @endsection
 
 @section('extra-css')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -14,11 +16,11 @@
         var data = new google.visualization.arrayToDataTable([
         ['Količina', 'Ukupno'],
 
-        ["Proizvodi", 100],
-        ["Kategorije", 31],
-        ["Akcije", 7],
-        ["Porudzbine", 74],
-        ['Registrovani korisnici', 3]
+        ["Proizvodi", {{$products}}],
+        ["Kategorije", {{$categories}}],
+        ["Akcije", {{$actions}}],
+        ["Porudzbine", {{$orders}}],
+        ['Registrovani korisnici', {{$users}}]
         ]);
 
         var options = {

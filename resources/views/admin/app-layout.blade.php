@@ -33,7 +33,7 @@
     
     <!-- Top Navbar  -->
   <div id="top-area">
-      <h3 id="brand">Eskulap Apoteka</h3>
+      <a style="text-decoration: none" href="/admin"><h3 class="mt-0" id="brand">Eskulap farm Admin</h3></a> 
       <button title="hide/show sidebar" class="hamburger"><i class="fas fa-bars"></i></button>
   </div>
 
@@ -44,14 +44,16 @@
       <div id="sidebar">
 
           <ul class="sidebar-list">
-              <li class="sidebar-item"><a href="/admin"><i class="fas fa-tachometer-alt"></i></i>Dashboard</a></li>
+              <li class="sidebar-item"><a href="/admin"><i class="fas fa-tachometer-alt"></i></i>Admin</a></li>
               <li class="sidebar-item"><a href="/products"><i class="fab fa-product-hunt"></i>Proizvodi</a></li>
               <li class="sidebar-item"><a href="/categories"><i class="fas fa-cogs"></i>Kategorije</a></li>
               <li class="sidebar-item"><a href="/actions"><i class="fas fa-cogs"></i>Akcije</a></li>
               <li class="sidebar-item"><a href="/admin/orders"><i class="fas fa-shipping-fast"></i></i>Porudzbine</a></li>
-              <li class="sidebar-item"><a href="/users"><i class="fas fa-cogs"></i>User managment</a></li>
-              <li class="sidebar-item"><a href="/"><i class="fas fa-home"></i>Frontend</a></li>
-              <li class="sidebar-item"><a href="/products"><i class="fas fa-sign-out-alt"></i>Izloguj se</a></li>
+              @if (superadminAccess())
+                <li class="sidebar-item"><a href="/admin/users"><i class="fas fa-cogs"></i>Korisnici</a></li>
+              @endif
+              <li class="sidebar-item"><a href="/"><i class="fas fa-home"></i>Sajt Početna</a></li>
+              <li class="sidebar-item"><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i>Izloguj se</a></li>
           </ul>
   
       </div>

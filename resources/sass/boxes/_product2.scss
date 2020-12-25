@@ -1,0 +1,88 @@
+.product {
+
+    border: 2px solid white;    
+    transition: border 0.5 ease;
+    &:hover {
+        border: 2px solid lighten($secondary-color, 10%);
+    }
+
+    .product-image {
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+
+        .add-on {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background-color: $primary-color;
+            padding: 5px 10px;
+            border-radius: 50px;
+        }
+        
+        img {
+            cursor: pointer;
+            // filter: brightness(100%);
+            transition: all 0.2s ease;
+            &:hover {
+                // filter: brightness(90%);
+                transform: scale(1.05);
+            }
+        }        
+    }
+
+    .product-text {
+        padding: 8px;
+        a {
+            display: block;
+            color: $secondary-color;
+            text-transform: uppercase;
+            font-size: 18px;
+            min-height: 42px;
+            margin-top: 10px;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            span {
+                strong {
+                    color: $primary-color;
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-right: 3px;
+                }
+            }
+
+            .product-order {
+                font-size: 1em;
+                // padding: 0.5em;
+                font-family: Arial;
+                display: flex;
+                input {
+                    max-width: 50px;
+                    height: 38px;
+                }
+                a {
+                    background: $primary-color;
+                    color: white;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    button {
+        background: $primary-color;
+        &:hover {
+            background: $primary-color;
+        } 
+        &:active {
+            background: $primary-color;
+        } 
+        &:focus {
+            background: $primary-color;
+        } 
+    }
+}

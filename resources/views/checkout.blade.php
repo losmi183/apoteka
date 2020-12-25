@@ -11,17 +11,17 @@
             <div class="my-4"></div>
             <h3 class="title-primary">Plaćanje</h3>
             <div class="mb-4"></div>
-            <div class="alert alert-primary">Već imate nalog? <span class="ml-4 text-primary"><a href="">Prijavite se</a></span></div>           
+            <div class="alert alert-primary">Već imate nalog? <span class="ml-4 text-primary"><a href="{{route('login')}}">Prijavite se</a></span></div>           
         </div>        {{-- End Col 12  --}}
 
         <div class="col-12 col-lg-6 col-xl-7">
             <div class="user-data border p-3">
-                <h3 class="title-primary mb-4">Ukupno u korpi</h3>               
+                <h5 class="title-primary-sm mb-4">Podaci za dostavu</h5>               
                     
                     {{-- Ime  --}}
                     <div class="form-group">
                         <label class="">Ime i prezime <span class="text-danger">*</span></label>        
-                        <input required type="text" class="form-control @error('ime') is-invalid @enderror" name="ime" value="{{ old('ime') }}"  autocomplete="ime" autofocus>    
+                        <input required type="text" class="form-control @error('ime') is-invalid @enderror" name="ime" value="{{ old('ime') ?? ($user ? $user->name : '') }}"  autocomplete="ime" autofocus>    
                         @error('ime')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
                     {{-- Email  --}}
                     <div class="form-group">
                         <label class="">Email <span class="text-danger">*</span></label>        
-                        <input required type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus>    
+                        <input required type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? ($user ? $user->email : '') }}"  autocomplete="email" autofocus>    
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -43,7 +43,7 @@
                     {{-- Adresa  --}}
                     <div class="form-group">
                         <label class="">Adresa <span class="text-danger">*</span></label>        
-                        <input required type="text" class="form-control @error('adresa') is-invalid @enderror" name="adresa" value="{{ old('adresa') }}"  autocomplete="adresa" autofocus>    
+                        <input required type="text" class="form-control @error('adresa') is-invalid @enderror" name="adresa" value="{{ old('adresa') ?? ($user ? $user->address : '') }}"  autocomplete="adresa" autofocus>    
                         @error('adresa')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                     {{-- Telefon  --}}
                     <div class="form-group">
                         <label class="">Telefon <span class="text-danger">*</span></label>        
-                        <input required type="number" class="form-control @error('telefon') is-invalid @enderror" name="telefon" value="{{ old('telefon') }}"  autocomplete="telefon" autofocus>    
+                        <input required type="number" class="form-control @error('telefon') is-invalid @enderror" name="telefon" value="{{ old('telefon') ?? ($user ? $user->phone : '') }}"  autocomplete="telefon" autofocus>    
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                     {{-- Grad  --}}
                     <div class="form-group">
                         <label class="">Grad <span class="text-danger">*</span></label>        
-                        <input required type="text" class="form-control @error('grad') is-invalid @enderror" name="grad" value="{{ old('grad') }}"  autocomplete="grad" autofocus>    
+                        <input required type="text" class="form-control @error('grad') is-invalid @enderror" name="grad" value="{{ old('grad') ?? ($user ? $user->city : '') }}"  autocomplete="grad" autofocus>    
                         @error('grad')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                     
                     {{-- Dodatne napomene  --}}
                     <div class="form-group">
-                        <label class="">Dodatne napomene <span class="text-danger">*</span></label>        
+                        <label class="">Dodatne napomene</label>        
                         <textarea name="napomene" class="form-control @error('napomene') is-invalid @enderror"  cols="30" rows="5" name="napomene">{{ old('napomene') }}</textarea>
                         @error('napomene')
                             <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@
         </div>
         <div class="col-12 col-lg-6 col-xl-5">
             <div class="order-data border p-3">
-                <h3 class="title-primary mb-4">Ukupno u korpi</h3>
+                <h3 class="title-primary-sm mb-4">Ukupno u korpi</h3>
 
                 <div class="d-flex justify-content-between">
                     <p class="font-weight-bold">Proizvod</p>
@@ -132,7 +132,7 @@
                 <button id="submit-enabled" class="btn btn-primary btn-block">Poruči</button>
 
             </div>
-            <p class="mt-1">Sva polja obeležena sa ( * ) su obavezna.</p>
+            <p class="mt-1">Sva polja obeležena sa ( <span class="text-danger">*</span> ) su obavezna.</p>
         </div>
     
 

@@ -58,7 +58,7 @@
                             </form>
                         </td>
                         <td>
-                            <a class="btn btn-primary" href="/admin/order/{{$order->id}}">Pogledaj</a>
+                            <a class="btn btn-secondary" href="/admin/order/{{$order->id}}">Pogledaj</a>
                         </td>
                     </tr>
                     @endforeach

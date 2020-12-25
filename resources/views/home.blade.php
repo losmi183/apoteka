@@ -50,7 +50,7 @@
                 @foreach ($randomCategories as $category)
                     <div class="col-md-4">
                         <a href="/prodavnica/{{$category->slug}}">
-                            <div class="box-simple" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="800">
+                            <div class="box-simple">
                                 <div class="box-simple-image">
                                     <img src="images/category/2.jpg" alt="" class="img-fluid">
                                 </div>
@@ -91,7 +91,17 @@
                         <div class="product-text">
                             <a href="/proizvodi/{{$product->slug}}" class="product-title">{{$product->ime}}</a>
                             <div class="product-info">
-                                <span class="product-price"><strong>{{presentPrice($product->cena)}}</strong>KM</span>
+                                
+                                <div class="product-price">
+                                    {{-- Ako postoji popust  --}}
+                                    @if ($product->popust)
+                                        <small class="product-price-false mr-1">{{ presentPrice($product->cena) }}</small>
+                                        <span class="product-price"><strong>{{ presentPrice($product->popust) }}</strong>KM</span>
+                                        
+                                    @else 
+                                        <span class="product-price"><strong>{{ presentPrice($product->cena) }}</strong>KM</span>
+                                    @endif  
+                                </div>
         
                                 <div class="product-order">
                                     <form class="add-to-cart-form" action="/cart" method="POST">
@@ -103,6 +113,7 @@
                                             <input name="slug" type="hidden" value="{{ $product->slug }}">
                                             <input name="qty" type="number" class="form-control" value="1">
                                             <input name="price" type="hidden" value="{{ $product->cena }}">
+                                            <input name="discount" type="hidden" value="{{ $product->popust }}">
                                             <input name="image" type="hidden" value="{{ $product->image }}">
 
                                             <div class="input-group-append">
@@ -194,7 +205,17 @@
                         <div class="product-text">
                             <a href="/proizvodi/{{$product->slug}}" class="product-title">{{$product->ime}}</a>
                             <div class="product-info">
-                                <span class="product-price"><strong>{{presentPrice($product->cena)}}</strong>KM</span>
+                                
+                                <div class="product-price">
+                                    {{-- Ako postoji popust  --}}
+                                    @if ($product->popust)
+                                        <small class="product-price-false mr-1">{{ presentPrice($product->cena) }}</small>
+                                        <span class="product-price"><strong>{{ presentPrice($product->popust) }}</strong>KM</span>
+                                        
+                                    @else 
+                                        <span class="product-price"><strong>{{ presentPrice($product->cena) }}</strong>KM</span>
+                                    @endif  
+                                </div>
     
                                 <div class="product-order">
                                     <form class="add-to-cart-form" action="/cart" method="POST">
@@ -206,6 +227,7 @@
                                             <input name="slug" type="hidden" value="{{ $product->slug }}">
                                             <input name="qty" type="number" class="form-control" value="1">
                                             <input name="price" type="hidden" value="{{ $product->cena }}">
+                                            <input name="discount" type="hidden" value="{{ $product->popust }}">
                                             <input name="image" type="hidden" value="{{ $product->image }}">
 
                                             <div class="input-group-append">

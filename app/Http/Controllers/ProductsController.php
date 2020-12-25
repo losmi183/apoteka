@@ -14,6 +14,11 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductsController extends Controller
 {
+    // Allow access for publishers and admins
+    public function __construct()
+    {
+        $this->middleware('publisher');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -152,9 +157,12 @@ class ProductsController extends Controller
             // Price in DB saved in cents
             'cena' => $request->cena * 100,
             'opis' => $request->opis,
-            // Image is formated as relative path to storage + filename + ext
-            'image' => $path
+            // Image is formated as relative path to storage + filename + ext            
         ]);
+        if($path) {
+            $product->image = $path;
+            $product->save();
+        }
 
         return redirect()->route('products')->with('success', 'Proizvod je uspešno izmenjen');
     }

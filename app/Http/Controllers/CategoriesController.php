@@ -10,6 +10,11 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoriesController extends Controller
 {
+    // Allow access for publishers and admins
+    public function __construct()
+    {
+        $this->middleware('publisher');
+    }
     /**
      * Display a listing of the resource.
      *

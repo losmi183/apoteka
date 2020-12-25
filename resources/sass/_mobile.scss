@@ -5,23 +5,26 @@
             width: 160px !important;
         }
     }
+    .social-wrapper {
+        i {
+            margin: 0 0 0 4px !important;
+            padding: 6px !important;
+        }
+    }
+    .top-header {
+        i {
+            margin: 0 0 0 4px !important;
+            padding: 6px !important;
+        }
+     }
  }
 @media (max-width: 575.98px) {    
-    .mobile-hide {
-        display: none;
-    }
     .navbar {
         form {
             margin-right: 9px;
         }
         input {
             width: 200px;
-        }
-    }
-    .social-wrapper {
-        i {
-            margin: 2px !important;
-            padding: 6px !important;
         }
     }
     .logo-wrapper {
@@ -31,6 +34,9 @@
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) { 
+    .mobile-hide {
+        display: none;
+    }
     .logo-wrapper {
         margin: 0 auto;
         max-width: 100% !important;

@@ -95,7 +95,7 @@
                                 <form class="d-inline" action="/product/delete/{{$product->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger" title="obriši">Obriši</button>
+                                    <button class="btn btn-primary" title="obriši">Obriši</button>
                                 </form>
 
                             </div>

@@ -65,10 +65,12 @@ a.prev2, a.next2 {
   // opacity: .5;
 }
 
-// .slick-active {
-//   opacity: 1;
-// }
-
-// .slick-current {
-//   opacity: 1;
-// }
+@media (max-width: 767.98px) {
+  // position of controls based on the container 
+  a.prev1 {
+    display: none !important;
+  }
+  a.prev2 {
+    display: none !important;
+  }
+}

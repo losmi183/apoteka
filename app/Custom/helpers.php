@@ -29,7 +29,7 @@ function appendQuery($key, $value)
 // Formating helpers
 function formatDate($time)
 {
-    return date('d-m-Y', strtotime($time));
+    return date('d.m.Y. G:i', strtotime($time));
 }
 
 
@@ -64,4 +64,36 @@ function orderClass($status)
 function formatActive($bool)
 {
     return $bool ? 'aktuelna' : 'istekla';
+}
+
+// Auth helpers
+function backendAccess()
+{
+    if(auth()->check())
+    {
+        if(auth()->user()->role === 'publisher' OR auth()->user()->role === 'admin') {
+            return 'admin';
+        } 
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
+}
+function superadminAccess()
+{
+    if(auth()->check())
+    {
+        if(auth()->user()->role === 'admin') {
+            return 'admin';
+        } 
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
 }

@@ -5,25 +5,31 @@
         <div class="container my-3">
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="info-box">
-                        <i class="far fa-question-circle" aria-hidden="true"></i>
-                        <h3>Najčešća pitanja</h3>
-                        <p>Pretraživanje proizvoda / Registracija / Korpa / Poručivanje</p>
-                    </div>
+                    <a href="/pitanja">
+                        <div class="info-box">
+                            <i class="far fa-question-circle" aria-hidden="true"></i>
+                            <h3>Najčešća pitanja</h3>
+                            <p>Pretraživanje proizvoda / Registracija / Korpa / Poručivanje</p>
+                        </div>
+                    </a>
                 </div>                
                 <div class="col-sm-4">
-                    <div class="info-box">
-                        <i class="fas fa-truck" aria-hidden="true"></i>
-                        <h3>Način isporuke</h3>
-                        <p>Isporuka se vrši brzom poštom / Moguće lično preuzimanje</p>
-                    </div>
+                    <a href="/isporuka">
+                        <div class="info-box">
+                            <i class="fas fa-truck" aria-hidden="true"></i>
+                            <h3>Način isporuke</h3>
+                            <p>Isporuka se vrši brzom poštom / Moguće lično preuzimanje</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-4">
-                    <div class="info-box">
-                        <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
-                        <h3>Način plaćanja</h3>
-                        <p>Plaćanje pouzećem / Plaćanje preko računa</p>
-                    </div>
+                    <a href="/placanje">
+                        <div class="info-box">
+                            <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                            <h3>Način plaćanja</h3>
+                            <p>Plaćanje pouzećem / Plaćanje preko računa</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -43,29 +49,32 @@
                     </p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Info</h3>
+                    <h3>Pronadjite nas</h3>
                         <p>
-                            <a href="#">Politika privatnosti</a><br>
-                            <a href="#">Uslovi korišćenja</a><br>
-                            <a href="#">Najčešća pitanja i odgovori</a><br>
-                            <a href="#">Ankete</a>
+                            <a href="mailto:info@eskulap-farm.com">
+                                <i class="far fa-envelope" aria-hidden="true"></i> 
+                                info@eskulap-farm.com
+                            </a> <br>
+                            <a href="https://m.facebook.com/eskulap.farm"><i class="fab fa-facebook mr-1" aria-hidden="true"></i>facebook</a> <br>
+                            <a href="viber://contact?number=%2B38756410828"><i class="fab fa-viber mr-1" aria-hidden="true"></i>Viber</a>
+                            
                         </p>
                 </div>
                 <div class="col-md-3">
                     <h3>Podrška</h3>
                         <p>
-                            <a href="/Podrska/120/Kontakt.shtml">Kontakt</a><br>
-                            <a href="/Podrska/123/Nacin-placanja.shtml">Način plaćanja</a><br>
-                            <a href="/Podrska/124/Isporuka.shtml">Isporuka</a>
+                            <a href="/pitanja">Pitanja</a><br>
+                            <a href="/isporuka">Isporuka</a><br>
+                            <a href="/placanje">Plaćanje</a>
                         </p>
                 </div>
                 <div class="col-md-3">
                     <h3>Moj nalog</h3>
                     <p>
-                        <a href="/rs/prijava">Log in</a><br>
-                        <a href="/rs/registracija">Registracija</a><br>
-                        <a href="/Moj--nalog/107/Zaboravili-ste-lozinku.shtml">Zaboravili ste lozinku </a><br>
-                        <a href="/account/shop_search.php">Dosadašnje narudžbe</a>
+                        <a href="{{route('login')}}">Log in</a><br>
+                        <a href="{{route('register')}}">Registracija</a><br>
+                        <a href="{{route('password.request')}}">Zaboravili ste lozinku </a><br>
+                        <a href="/moje-porudzbine">Dosadašnje narudžbe</a>
                     </p>
                 </div>
             </div>

@@ -145,25 +145,15 @@ class ShopController extends Controller
     public function search(Request $request)
     {   
         $request->validate([
-            'search' => 'min:3'
-        ],
-        [
-            'search.min' => 'Potrebna su najmanje 3 slova za pretragu'
+            'tag' => 'required'
         ]);
 
-        $search = $request->search;
+        $tag = $request->tag;
 
-        $cena = request()->cena;
+        $products = Product::search($request->tag)
+        ->paginate(16);
 
-
-        // $products = Product::where('ime', 'like', "%$search%")->get();
-        $products = Product::search($search)
-        ->sortPrice($cena)
-        ->paginate(12);
-
-        // return $products;
-
-        return view('search', compact('products', 'search'));
+        return view('search', compact('products', 'tag'));
     }
 
     public function action($slug)   

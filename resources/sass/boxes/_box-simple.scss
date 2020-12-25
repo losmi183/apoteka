@@ -48,7 +48,8 @@
         padding: 8px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: space-between;
+        min-height: 170px;
     }
     h3 {
         color: $secondary-color;

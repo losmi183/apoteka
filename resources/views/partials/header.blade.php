@@ -3,10 +3,10 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <div class="top-left">
-                <div class="mr-sm-4">
+                <div class="">
                     <a href="tel:38756410828">
-                        <i class="fas fa-info-circle"></i>
-                        info:+387 56 410 828
+                        <i class="fas fa-info-circle m-0"></i>
+                        <span class="text-nowrap">info:+387 56 410 828</span>
                     </a>
                 </div>
             </div> <!-- End of top-left  -->
@@ -14,35 +14,56 @@
            
             <div class="top-right d-flex align-items-center">  
 
-                <!-- Login Dropdown component  -->
-                <div class="login-component">
-                    <a id="login-dropdown" class=" mr-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden="true"></i><span class="mobile-hide">Moj nalog</span>
-                    </a>  
-
-                    <div class="login-content dropdown-menu dropdown-menu-right" aria-labelledby="login-dropdown">
-                        <a class="text-right" id="close"><i class="fas fa-window-close" aria-hidden="true"></i></a> <br>                                
-                        <h5>Prijava korisnika</h5> <hr>
-                        <form action="">
-                            <div class="form-group">
-                                <label>Email adresa</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Lozinka</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <button class="btn btn-primary btn-block">Prijavite se</button>
-                        </form>
-                        <br>
-                        <a href="">Zaboravili ste lozinku</a>
-                        <br>
-                        <button class="btn btn-secondary btn-block">Napravite nalog</button>
-                    </div>
-                    
-                </div><!-- End Login Dropdown component  -->
+            @guest
+                <div class="signih">
+                    <a href="{{route('login')}}">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="mobile-hide">Prijava</span>
+                    </a>
+                </div>
+                <div class="signup">
+                    <a href="{{route('register')}}">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="mobile-hide">Registracija</span>
+                    </a>
+                </div>
+                @else
                 
-                <!-- Cart Dropdown Component  -->
+                @if (backendAccess())
+                    <div class="signup">
+                        <a href="/admin">
+                            <i class="fas fa-user-cog"></i>
+                            <span class="mobile-hide">Admin</span>
+                        </a>
+                    </div>
+                @endif
+   
+                <div class="dropdown">
+                    <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <span class="mobile-hide">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </span>
+                    </a>
+    
+                    <div class="dropdown-menu dropdown-menu-right p-0 m-0" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item border-bottom my-2" href="/moje-porudzbine">Moje porudzbine</a>  
+                        <a class="dropdown-item border-bottom my-2" href="/moj-profil">Moj Profil</a>                        
+
+                        <a class="dropdown-item border-bottom my-2" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            Izloguj se
+                        </a>
+                        
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @endguest
+                
+                <!-- Cart Icon and count Component  -->
                 <div class="cart-component">
                     <a href="/cart">
                         <span class="shoping-cart">

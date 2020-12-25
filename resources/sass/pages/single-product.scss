@@ -1,0 +1,17 @@
+.price-display {
+    
+    span {
+        strong {
+            color: $primary-color;
+            font-size: 20px;
+            font-weight: 600;
+            margin-right: 3px;
+        }
+    }
+    small {
+        text-decoration: line-through;
+        color: $secondary-color;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}

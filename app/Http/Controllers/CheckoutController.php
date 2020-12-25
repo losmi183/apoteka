@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Requests\CheckoutStoreRequest;
 
@@ -16,12 +18,18 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        if(Cart::count() == 0) {
-            return back()->with('error', 'Korpa je prazna');
+    {       
+        $user = ''; 
+        // Fetch logged user if exsist
+        if(Auth::check()) {
+            $user = Auth::user();
         }
 
-        return view('checkout');
+        if(Cart::count() == 0) {
+            return back()->with('error', 'Korpa je prazna');
+        }        
+
+        return view('checkout', compact('user'));
     }
 
     /**
@@ -58,6 +66,12 @@ class CheckoutController extends Controller
             'napomene' => $request->napomene,
             'suma' => Cart::subtotal()
         ]);
+
+        // Adding user id if user logged in / if not null
+        if(Auth::check()) {
+            $order->user_id = Auth::user()->id;
+            $order->save();
+        }
 
         // ProductOrder
         foreach(Cart::content() as $item) {

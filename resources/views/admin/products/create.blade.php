@@ -91,24 +91,6 @@
                     @enderror
                 </div>
             </div>
-
-
-
-            
-            {{-- Ime  --}}
-            <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">Naziv proizvoda</label>
-
-                <div class="col-md-6">
-                    <input id="ime" type="text" class="form-control @error('ime') is-invalid @enderror" name="ime" value="{{ old('ime') }}"  autocomplete="ime" autofocus>
-
-                    @error('ime')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
                                                 
             {{-- Cena  --}}
             <div class="form-group row">

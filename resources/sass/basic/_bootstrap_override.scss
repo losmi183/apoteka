@@ -119,13 +119,24 @@
     }
 }
 
-// NAVBAR
+/*
+*
+* NAVBAR
+*
+*/
+
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus {
     outline: none;
     box-shadow: none;
     margin-top: 8px;
+}
+
+
+.navbar-margin-top {
+    margin-top: 55px !important;
+    z-index: 1000 !important;
 }
 
 
@@ -164,5 +175,50 @@
                 color: darken($primary-color, 10%);
             }
         }
+    }
+}
+
+/*
+* Dropdown
+*/
+
+.dropdown-menu {
+    margin-top:17px !important;
+    z-index: 100000000 !important; 
+}
+
+/*
+* Accordion
+*/
+
+#accordion {
+
+    .card {
+        border: none;   
+    }
+
+    .card-header {
+        padding: 5px;
+        background: #f2f2f2;
+        margin-top: 15px;   
+        border: 1px solid #ccc;
+    }
+    .card-body {
+        border: none !important;
+    }
+}
+
+/*
+* Pagination
+*/
+
+.pagination {
+    .page-link {
+        color: $primary-color;
+    }
+    .page-item.active .page-link 
+    {
+        background-color: $primary-color;
+        border-color: $primary-color;
     }
 }

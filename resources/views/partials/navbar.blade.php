@@ -16,11 +16,11 @@
         </div>   
 
         <div>
-            <form class="form-inline" action="/action_page.php">
+            <form class="form-inline" action="/pretraga" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Pretraga">
+                    <input type="text" class="form-control" placeholder="Pretraga" name="tag">
                     <div class="input-group-postpend">
-                      <a href="#" class="input-group-text"><i class="fas fa-search"></i></a>
+                      <a style="cursor: pointer;" onclick="this.closest('form').submit();return false;" class="input-group-text"><i class="fas fa-search"></i></a>
                     </div>
                 </div>
               </form>        
