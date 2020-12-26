@@ -57,7 +57,7 @@ Auth::routes();
 Route::get('/home', [HomepageController::class, 'index'])->name('home');
 
 /**
- * User Routes
+ * User Routes / musterije
  * 
  */
 Route::get('/moj-profil', [UserdataController::class, 'index']);
