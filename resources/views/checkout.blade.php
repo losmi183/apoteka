@@ -95,7 +95,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror                  
-                    </div>
+                    </div>  
                 
             </div>
         </div>
@@ -148,8 +148,7 @@
 
 @section('extra-js')
     <script>
-        $(document).ready(function() {
-            
+        $(document).ready(function() {            
             $('#accept').click(function() {
                 if( $(this).prop('checked') == true ) {
                     // $('#submit').prop('disabled', false);
@@ -162,9 +161,7 @@
                     $('#submit-disabled').show();
                 }
             })
-
         });
-    </script>
-    
+    </script>    
 @endsection
 

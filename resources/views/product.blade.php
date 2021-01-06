@@ -215,7 +215,6 @@
                     $('.input-quantity').val(value);
                 }
             });
-
         });
     </script>
 @endsection

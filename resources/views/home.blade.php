@@ -73,8 +73,7 @@
             </div>
             <hr class="mb-4">
 
-            <a class="prev1"><i class="fas fa-angle-left"></i></a>
-            <a class="next1"><i class="fas fa-angle-right"></i></a>
+
 
             <section class="recomand-slider slider"> 
                 
@@ -186,8 +185,8 @@
             <div class="d-sm-flex justify-content-sm-between align-items-center">
                 <h3 class="title-primary">Akcije</h3>
                 <div class="slick-controls">
-                    <a class="prev2"><i class="fas fa-angle-left"></i></a>
-                    <a class="next2"><i class="fas fa-angle-right"></i></a>
+                    {{-- <a class="prev2"><i class="fas fa-angle-left"></i></a>
+                    <a class="next2"><i class="fas fa-angle-right"></i></a> --}}
                 </div>
             </div>
             <hr class="mb-4">

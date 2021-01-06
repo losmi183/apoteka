@@ -1,11 +1,11 @@
-<header>
+<header class="fixed-top">
     <div class="top-header">   
         <div class="container d-flex justify-content-between align-items-center">
 
             <div class="top-left">
                 <div class="">
                     <a href="tel:38756410828">
-                        <i class="fas fa-info-circle m-0"></i>
+                        <i class="fas fa-info-circle m-0 hide-420"></i>
                         <span class="text-nowrap">info:+387 56 410 828</span>
                     </a>
                 </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="signup">
                     <a href="{{route('register')}}">
-                        <i class="fas fa-sign-in-alt"></i>
+                        <i class="fas fa-user-plus"></i>
                         <span class="mobile-hide">Registracija</span>
                     </a>
                 </div>
@@ -82,6 +82,12 @@
         </div> <!-- End of container  -->           
     </div>  <!-- End of top-header  -->
 
+    <div style="height: 55px"></div>
+</header>
+
+<div class="space-55"></div>
+
+<header>
     <div class="middle-header">
         <div class="container" >
             <div class="row no-gutters">
@@ -93,14 +99,6 @@
                                 <img src="/images/logo-final.png" >
                             </a>
                         </div>
-                        <!-- <img class="img-fluid" src="images/eskulap.png" alt="">
-                        <div class="effects">
-                            <img class="img-fluid img-effect" src="images/pehar.png" data-aos="fade-down" data-aos-duration="300">
-                            <img class="img-fluid img-effect" src="images/f.png" data-aos="fade-up" data-aos-duration="200" data-aos-delay="200">
-                            <img class="img-fluid img-effect" src="images/a.png" data-aos="fade-up" data-aos-duration="200" data-aos-delay="400">
-                            <img class="img-fluid img-effect" src="images/r.png" data-aos="fade-up" data-aos-duration="200" data-aos-delay="600">
-                            <img class="img-fluid img-effect" src="images/m.png" data-aos="fade-up" data-aos-duration="200" data-aos-delay="800">
-                        </div> -->
                     </div>
                 </div>
 
@@ -115,20 +113,7 @@
                     <a href="https://m.facebook.com/eskulap.farm/?ref=page_internal&mt_nav=0"><i class="fab fa-facebook"></i></a>
                     <a href="viber://contact?number=%2B38756410828"><i class="fab fa-viber"></i></a>
                     <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>                        
-                </div>
-                
-                <!-- <div class="col-md-4 search-wrapper">    
-                    <form class="form-inline" action="/action_page.php">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="PRETRAGA">
-                            <div class="input-group-postpend">
-                              <a href="#" class="input-group-text"><i class="fas fa-search"></i></a>
-                            </div>
-                        </div>
-                      </form>        
-                </div> -->
-                
-
+                </div>          
 
             </div>
         </div>

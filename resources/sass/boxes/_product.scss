@@ -2,7 +2,7 @@
     border: 2px solid #ccc;    
     transition: all 0.3s;
     &:hover {
-        border: 2px solid lighten($primary-color, 30%);
+        // border: 2px solid lighten($primary-color, 30%);
     }
 
     .product-image {

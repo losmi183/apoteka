@@ -8,7 +8,6 @@
  * Old design and admin scripts
  */
 require('./bootstrap');
-require('./custom/navbar.js');
 require('./custom/product.js');
 require('./custom/admin/create-edit.js');
 require('./custom/admin/admin-panel.js');
@@ -19,8 +18,8 @@ require('./custom/cart.js');
 /**
  * Frontend Scripts
  */
+require('./frontend/fixed-navbar.js');
 require('./frontend/slideshow.js');
-require('./frontend/navbar-fixed.js');
 require('./frontend/slick.js');
 require('./frontend/slick-custom.js');
 require('./frontend/product-add-to-cart.js');

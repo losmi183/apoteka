@@ -80,7 +80,7 @@
                                           </div>                               
                                       </td>  
                                       <td class="cart-table-column cart-table-remove d-lg-flex justify-content-lg-end">
-                                          <a href="/cart/remove/{{$item->rowId}}" class="btn btn-outline-secondary">
+                                          <a href="/proizvodi/{{$item->slug}}" class="btn btn-outline-secondary">
                                             <i class="fas fa-eye"></i>
                                           </a>
                                       </td>
