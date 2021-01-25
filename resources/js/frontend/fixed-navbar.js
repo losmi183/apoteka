@@ -1,5 +1,6 @@
 $(document).ready(function(){   
 
+    alert('asd');
     navbar = $('.navbar');
 
     // When the user scrolls the page, execute myFunction
